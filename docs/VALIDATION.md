@@ -22,6 +22,8 @@ No Qloo key was present in the authorized mailbox check or configured hosted run
 
 ## Reproducible inventory and export checks
 
+The subsequent [readiness and recovery review](READINESS-REVIEW.md) fixes a presentation gap after an infeasible solve: newly acquired evidence can be inspected separately from the last packed-plan snapshot. Browser checks verify first-failure recovery, preservation of the original snapshot after a later failure, disabled stale exports, keyboard focus and narrow layout. This does not establish live API access or customer value.
+
 Run `node --test tests/csv.test.mjs` from the project directory. The test loads TypeScript through the locally installed compiler; no API key or external service is required.
 
 Local verification on 17 October 2026: all twelve CSV/export tests passed. A targeted TypeScript check of `lib/sample.ts` and `lib/csv.ts` against the planner types also passed. These results do not establish a successful complete application build or public deployment.
