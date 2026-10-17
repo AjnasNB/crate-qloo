@@ -2,7 +2,7 @@
 
 Developed by Ajnas N B
 
-**Draft status: pending live Qloo integration validation, public deployment verification, and customer evaluation. This is not a submitted entry.** An API key request has been received by the access-request system; a working key has not yet been supplied. Do not remove this qualification until the relevant gates pass.
+**Draft status: public prototype deployed; pending live Qloo integration validation and customer evaluation. This is not a submitted entry.** An API key request has been received by the access-request system; a working key has not yet been supplied. Do not remove this qualification until the relevant gates pass.
 
 ## One sentence
 
@@ -43,11 +43,11 @@ The product is a bounded planning prototype. Automated software checks can verif
 
 ## Required links and final gates
 
-- Functional external demo URL: **pending**.
+- Externally hosted prototype URL: [Crate](https://crate-books-ajnas.foamythyme32.chatgpt.site). Synthetic mode is working; the required live Qloo path remains pending.
 - Public source repository URL: [AjnasNB/crate-qloo](https://github.com/AjnasNB/crate-qloo), verified public with GitHub-detected MIT license on October 17, 2026.
 - Public repository license: MIT; verify the repository recognizes the included `LICENSE` file.
 - Live Qloo evidence: **pending approved key and validation**.
-- Free, accessible judge access throughout the judging period: **pending deployment verification**.
+- Public prototype access: verified on October 17, 2026. Keep the completed live application available free throughout the judging period.
 - Description and instructions in English: prepared here; reconcile against the final implementation.
 
 The organizer requires a functional externally hosted app, public licensed source, and a description; a local-only or synthetic-only demonstration does not establish the required Qloo application. Review the [challenge requirements](https://qloo.devpost.com/) and [official rules](https://qloo.devpost.com/rules) before submitting. Do not invent a URL or mark this draft complete because a concept or local build looks convincing.

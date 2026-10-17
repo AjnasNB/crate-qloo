@@ -4,6 +4,14 @@ Developed by Ajnas N B
 
 Status: software verification and live cultural-value validation are separate. An approved API key and customer pilot results were not available when this document was prepared. Do not present proposed research or synthetic ranks as measured results.
 
+## Completed implementation checks, October 17, 2026
+
+All 51 automated tests pass: 12 CSV checks, 12 planner checks (including 220 seeded independent brute-force comparisons), 14 Qloo adapter checks, and 13 MCP HTTP-contract checks. Full TypeScript checking and the production build pass. Browser checks verified initial packing, locked-crate preservation, veto repair, disabled exports for stale plans, explicit conflicting-pin errors, and the narrow mobile layout. The hosted prototype's packing flow works, and anonymous access to its configuration endpoint returns HTTP 200 without credentials.
+
+Public prototype: [Crate](https://crate-books-ajnas.foamythyme32.chatgpt.site). Public MIT-licensed source: [AjnasNB/crate-qloo](https://github.com/AjnasNB/crate-qloo). Application code revision: `842683e195ab469ef7b3a5a7331fa7aec8f56505`; subsequent documentation-only updates do not change that implementation.
+
+Browser policy prevented checking Chrome's download history. CSV content and stock-safe export behavior were verified by automated tests; a completed browser download was not independently confirmed. Live Qloo, external-agent interoperability with a real key, reader usefulness and customer results remain unverified.
+
 ## Reproducible inventory and export checks
 
 Run `node --test tests/csv.test.mjs` from the project directory. The test loads TypeScript through the locally installed compiler; no API key or external service is required.
