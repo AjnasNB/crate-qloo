@@ -118,6 +118,18 @@ test("invalid tool metadata fails before upstream I/O and returns self-correctab
   assert.equal(dependencies.calls.length, 0);
 });
 
+test("an impossible shop reserve is rejected before consuming any Qloo request", async () => {
+  const dependencies = liveDependencies();
+  const args = planArgs();
+  args.books[0].quantity = 0;
+  args.books[0].reserve = 1;
+  const body = await (await invoke(call("crate_plan_stalls", args), dependencies)).json();
+  assert.equal(body.result.isError, true);
+  assert.equal(body.result.structuredContent.error.code, "INVALID_INPUT");
+  assert.match(body.result.structuredContent.error.message, /reserve cannot exceed stock quantity/i);
+  assert.equal(dependencies.calls.length, 0);
+});
+
 test("mocked live tools search, rank and allocate through the same public HTTP contract", async () => {
   const dependencies = liveDependencies();
   const search = await (await invoke(call("crate_search_entity", { query: "A title", type: "book" }), dependencies)).json();

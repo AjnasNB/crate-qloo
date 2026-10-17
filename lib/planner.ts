@@ -88,6 +88,8 @@ function validate(input: SolveInput): string[] {
     bookIds.add(book.id);
     if (![book.quantity, book.reserve].every((n) => Number.isSafeInteger(n) && n >= 0))
       errors.push(`${book.title}: quantity and reserve must be non-negative whole numbers.`);
+    if (book.reserve > book.quantity)
+      errors.push(`${book.title}: shop reserve cannot exceed stock quantity.`);
     if (!Number.isSafeInteger(book.ageDays) || book.ageDays < 0 || book.ageDays > 1_000_000)
       errors.push(`${book.title}: stock age must be a whole number from 0 to 1,000,000 days.`);
   }

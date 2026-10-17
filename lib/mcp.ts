@@ -30,7 +30,9 @@ const bookSchema = z.object({
   quantity: z.number().int().min(0).max(99), reserve: z.number().int().min(0).max(99),
   ageDays: z.number().int().min(0).max(1_000_000), price: z.number().min(0).max(10_000).default(0),
   color: z.string().regex(/^#[0-9a-f]{6}$/i).default("#788368"), entityId: uuidSchema,
-}).strict();
+}).strict().superRefine((book, context) => {
+  if (book.reserve > book.quantity) context.addIssue({ code: z.ZodIssueCode.custom, path: ["reserve"], message: "Shop reserve cannot exceed stock quantity." });
+});
 const stallSchema = z.object({
   id: eventIdSchema, name: z.string().trim().min(1).max(120), slots: z.number().int().min(1).max(6),
   anchors: z.array(anchorSchema).min(1).max(4),
@@ -81,7 +83,7 @@ export const MCP_TOOLS = [
       books: { type: "array", minItems: 1, maxItems: 18, items: { type: "object", additionalProperties: false,
         required: ["id", "title", "author", "quantity", "reserve", "ageDays", "entityId"], properties: {
           id: localIdJson, title: { type: "string", minLength: 1, maxLength: 240 }, author: { type: "string", minLength: 1, maxLength: 160 },
-          quantity: { type: "integer", minimum: 0, maximum: 99 }, reserve: { type: "integer", minimum: 0, maximum: 99 },
+          quantity: { type: "integer", minimum: 0, maximum: 99 }, reserve: { type: "integer", minimum: 0, maximum: 99, description: "Copies retained in the shop; must not exceed this book's quantity." },
           ageDays: { type: "integer", minimum: 0, maximum: 1_000_000 }, price: { type: "number", minimum: 0, maximum: 10_000, default: 0 },
           color: { type: "string", pattern: "^#[0-9a-fA-F]{6}$", default: "#788368" }, entityId: confirmedIdJson,
         } } },

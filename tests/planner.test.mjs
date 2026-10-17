@@ -149,6 +149,14 @@ test("invalid, duplicate and off-inventory evidence is rejected rather than repa
   }
 });
 
+test("an impossible shop reserve invalidates the whole stock input even when that title is unused", () => {
+  const input = setup([book("invalid", 0, 30, 2), book("available", 2)], { A: ["available", "invalid"] });
+  const result = solve(input);
+  assert.equal(result.feasible, false);
+  assert.deepEqual(result.assignments, { A: [] });
+  assert.match(result.diagnostics.join(" "), /reserve cannot exceed stock quantity/);
+});
+
 test("bounded worst-case inventory fills twelve slots", () => {
   const books = Array.from({ length: 18 }, (_, i) => book(`b${String(i).padStart(2, "0")}`, 2));
   const ids = books.map((b) => b.id);
@@ -226,7 +234,12 @@ test("exact DP matches independent brute-force optima across seeded allocation a
   };
   let feasible = 0, infeasible = 0, repairs = 0;
   for (let run = 0; run < 220; run++) {
-    const books = Array.from({ length: 3 + integer(4) }, (_, i) => book(`b${i}`, integer(3), integer(200), integer(2)));
+    // Optimization comparisons use physically valid stock; invalid reserves are
+    // covered separately as rejected inputs rather than zero-availability stock.
+    const books = Array.from({ length: 3 + integer(4) }, (_, i) => {
+      const quantity = integer(3);
+      return book(`b${i}`, quantity, integer(200), integer(quantity + 1));
+    });
     const ids = books.map((b) => b.id);
     const events = integer(4) === 0 ? ["A"] : ["A", "B"];
     const orders = Object.fromEntries(events.map((id) => [id, shuffle(ids).filter(() => random() > 0.17)]));

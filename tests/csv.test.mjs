@@ -71,6 +71,13 @@ test("rejects blank or duplicate supplied IDs and unsafe colors", () => {
   assert.throws(() => parseInventoryCsv("title,author,quantity,color\nA,B,1,url(bad)"), /hex color/);
 });
 
+test("rejects control characters inside local SKUs before they can fail live matching", () => {
+  for (const id of ["ISBN\n978-1", "ISBN\t978-1", "ISBN\u0000978-1", "ISBN\u007f978-1"]) {
+    assert.throws(() => parseInventoryCsv(`id,title,author,quantity\n"${id}",Title,Author,1`), /id cannot contain control characters/);
+  }
+  assert.equal(parseInventoryCsv('id,title,author,quantity\nISBN 978-1,Title,Author,1')[0].id, 'ISBN 978-1');
+});
+
 test("accepts 18 titles and rejects the 19th", () => {
   const header = "title,author,quantity\n";
   const rows = Array.from({ length: 19 }, (_, i) => `Title ${i},Author,1`);

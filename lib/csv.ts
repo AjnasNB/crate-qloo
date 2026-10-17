@@ -74,6 +74,7 @@ export function parseInventoryCsv(text: string): Book[] {
     const id = headers.includes("id") ? record.id : `import-${books.length + 1}`;
     if (!id) throw new Error(`Row ${rowNumber}: id cannot be blank when the id column is supplied.`);
     if (id.length > 80) throw new Error(`Row ${rowNumber}: id must be 80 characters or fewer.`);
+    if (/[\u0000-\u001f\u007f]/.test(id)) throw new Error(`Row ${rowNumber}: id cannot contain control characters.`);
     if (ids.has(id)) throw new Error(`Row ${rowNumber}: duplicate id ${id}. Use a unique local SKU for each row.`);
     ids.add(id);
     if (!record.title || record.title.length > 240) throw new Error(`Row ${rowNumber}: title is required and must be 240 characters or fewer.`);

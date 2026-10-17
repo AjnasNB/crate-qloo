@@ -38,7 +38,7 @@ A plan can be mathematically feasible and still be unhelpful to a bookseller. Cr
 
 ### Accomplishments
 
-The public prototype completes packing, constrained repair, inventory import and source-labeled export. All 51 automated checks pass, including independent brute-force comparisons of the allocator, CSV handling, Qloo error boundaries and MCP contracts. Production build and TypeScript checks pass. Browser checks cover locking, veto repair, stale exports, conflicting pins and mobile layout.
+The public prototype completes packing, constrained repair, inventory import and source-labeled export. All 54 automated checks pass, including independent brute-force comparisons of the allocator, CSV handling, Qloo error boundaries and MCP contracts. Production build and TypeScript checks pass. Browser checks cover locking, stock-out repair, stale exports, conflicting pins, dialog keyboard access, inline errors and mobile layout.
 
 ### What is next
 

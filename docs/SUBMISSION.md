@@ -6,6 +6,8 @@ Developed by Ajnas N B
 
 AjnasNB registered for the hackathon on October 17, 2026 after confirming eligibility and authorizing acceptance of its rules. Devpost displayed "Thanks for registering!". Project creation reported that its reCAPTCHA service could not connect. After one normal page reload, the Create project action still stalled. No project draft or final entry has been saved on Devpost. Prepared field text is in [DEVPOST-ENTRY.md](DEVPOST-ENTRY.md).
 
+The subsequent official Devpost welcome email linked a different, current "Qloo Agent Hackathon API Key Request Form" from the earlier developer-guide form. That current form was filled using the authorized identity and project details, but its Submit action remained on the form without a receipt. The earlier guide form's acknowledgment must not be treated as proof that the current form was received. No further duplicate request is claimed.
+
 ## One sentence
 
 Crate helps independent booksellers pack two cultural pop-ups from one limited stock pool, using cultural evidence to propose relevant books while keeping reservations, editorial decisions, and packing manifests consistent.
