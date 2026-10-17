@@ -34,6 +34,8 @@ The latest-check panel explicitly says it did not produce a complete packed plan
 
 Screenshots remain in the parent Crate evidence directory as `crate-first-failure-evidence.jpg`, `crate-later-failure-evidence.jpg` and `crate-recovery-mobile.jpg`. Partial/zero live responses and real upstream warning display still require the authorized Qloo credential; the completed browser checks used honestly labeled simulation.
 
+Site version 5 published source `470f58f91ee5f2d7a96688f84471a788395b2276` successfully, retaining public access and MCP. The public browser reproduction also exposed the failed attempt, both 12/12 synthetic coverage labels and the no-manifest disclosure, with export disabled. Public proof is retained as `crate-published-recovery-v5.jpg`. The key check still found no issued credential. No Devpost pending-live disclosure was removed.
+
 ## Sources
 
 [Official judging criteria](https://qloo.devpost.com/), [concept ledger](IDEATION.md), [product checks](PRODUCT-QA.md), [live validation plan](VALIDATION.md).
