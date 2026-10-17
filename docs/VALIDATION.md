@@ -4,7 +4,7 @@ Developed by Ajnas N B
 
 Status: software verification and live cultural-value validation are separate. An approved API key and customer pilot results were not available when this document was prepared. Do not present proposed research or synthetic ranks as measured results.
 
-## Completed implementation checks, October 17, 2026
+## Earlier version 3 checks, October 17, 2026
 
 All 54 automated tests pass: 13 CSV checks, 13 planner checks (including 220 seeded independent brute-force comparisons), 14 Qloo adapter checks, and 14 MCP HTTP-contract checks. Full TypeScript checking and the updated production build pass. Browser checks verified initial packing, locked-crate preservation, stock-out repair, disabled exports for stale plans, explicit conflicting-pin errors, dialog focus and return, inline CSV errors, and the narrow mobile layout. Version 3 was published successfully and its hosted browser flow verified eight placements, the source-labeled action log, the named stock dialog and heading focus. Anonymous access to the configuration endpoint returns HTTP 200 without credentials.
 
@@ -16,7 +16,7 @@ The published native MCP search tool was invoked from an external assistant on O
 
 ## Later live-readiness review, October 17, 2026
 
-Two defects were corrected after the version 3 review: a documented Qloo `query.explainability.warning` now marks optional explanations unavailable while preserving returned ranks, and the manual smoke check rejects UUID case or anchor-order changes that leave the actual upstream signal unchanged. The full updated suite passes 56/56 checks (13 CSV, 13 planner, 16 Qloo/input checks, 14 MCP); TypeScript and targeted lint pass. Publication of this correction is tracked separately from the earlier version 3 browser evidence.
+Two defects were corrected after the version 3 review: a documented Qloo `query.explainability.warning` now marks optional explanations unavailable while preserving returned ranks, and the manual smoke check rejects UUID case or anchor-order changes that leave the actual upstream signal unchanged. The full updated suite passes 56/56 checks (13 CSV, 13 planner, 16 Qloo/input checks, 14 MCP); TypeScript and targeted lint pass. The production build passed and Site version 4 successfully published revision `ded42c0cc1928a6a4bcf86d90165ccabe6b8dec8`, preserving public access and MCP availability. This server/input correction is separate from the earlier version 3 browser evidence.
 
 No Qloo key was present in the authorized mailbox check or configured hosted runtime. The access request receipt remains confirmed. The authorized follow-up to the hackathon manager was sent on October 17 and Gmail's sent record verified. No new live Qloo success or Devpost live-status update is claimed.
 

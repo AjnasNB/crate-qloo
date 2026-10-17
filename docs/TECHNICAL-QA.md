@@ -33,7 +33,9 @@ Reviewed on October 17, 2026. This ledger records actual source inspection and l
 
 ## Remaining acceptance gates
 
-The integrated production build and version 3 publication are verified. Before exposing a real key, confirm ignored local secret files and the upstream hard quota or deployment abuse controls. Then perform the live experiment in [VALIDATION.md](VALIDATION.md), including one real external-agent tool session and a changed-programme query. If inventory coverage or useful cultural differences fail, revise the premise rather than substituting fixtures.
+After the earlier version 3 review above, two additional regressions correct unavailable Qloo explanations and reject case/order-only programme changes in the live smoke input. The updated suite is 56/56 passing; TypeScript, targeted lint and the production build pass. Site version 4 published revision `ded42c0cc1928a6a4bcf86d90165ccabe6b8dec8` successfully with MCP available. See [the later validation record](VALIDATION.md#later-live-readiness-review-october-17-2026).
+
+Before exposing a real key, confirm ignored local secret files and the upstream hard quota or deployment abuse controls. Then perform the live experiment in [VALIDATION.md](VALIDATION.md), including one real external-agent tool session and a changed-programme query. If inventory coverage or useful cultural differences fail, revise the premise rather than substituting fixtures.
 
 Qloo matches works, not promised ISBN editions. The live adapter requires unique confirmed Qloo book entities; separate edition/SKU rows mapping to the same work currently need consolidation before a live request. This is a bounded prototype limitation, not evidence that those editions have distinct cultural affinities.
 
