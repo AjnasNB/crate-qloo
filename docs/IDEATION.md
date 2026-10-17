@@ -4,9 +4,9 @@ Developed by Ajnas N B
 
 Crate helps an independent bookstore prepare two separately staffed cultural stalls that depart simultaneously. It proposes books from one stock pool, preserves shop reserves and editorial decisions, and produces packing manifests. The concept is provisional: the workflow is supported by public examples, but willingness to adopt Crate and the value of its live Qloo results remain unvalidated.
 
-## Fifteen rounds of proposal and criticism
+## Sixteen rounds of proposal and criticism
 
-This is a decision ledger, not a transcript, customer research, or a record of fifteen product experiments.
+This is a decision ledger, not a transcript, customer research, or a record of sixteen product experiments.
 
 | Round | Question or criticism | Resulting decision |
 | --- | --- | --- |
@@ -25,6 +25,7 @@ This is a decision ledger, not a transcript, customer research, or a record of f
 | 13 | Is there enough evidence to build? | Conditional accept for a small planning prototype. Gate cultural-value claims on live API and customer evaluation. |
 | 14 | Is a strong concept already a strong submission? | Separate qualitative concept assessment from demonstrated implementation, design, and impact. No win probability is justified. |
 | 15 | Which architecture is proportionate to the product? | Treat the plan as a browser-owned artifact; unnecessary receipt signing is outside scope. Keep live Qloo proof a submission gate. |
+| 16 | Can a judge reach a credible live result quickly? | Keep Crate, but require a reviewed starter catalogue with genuine entity mappings after access arrives. Fetch fresh rankings rather than embedding purported live results. Verify a non-adaptation selection, differences between programmes, a live external-tool call, and stock-safe repair before submission. |
 
 ## Evidence and hypotheses
 

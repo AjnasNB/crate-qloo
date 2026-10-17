@@ -4,6 +4,8 @@ Developed by Ajnas N B
 
 **Draft status: public prototype deployed; pending live Qloo integration validation and customer evaluation. This is not a submitted entry.** An API key request has been received by the access-request system; a working key has not yet been supplied. Do not remove this qualification until the relevant gates pass.
 
+AjnasNB registered for the hackathon on October 17, 2026 after confirming eligibility and authorizing acceptance of its rules. Devpost displayed "Thanks for registering!". Project creation subsequently stalled because its reCAPTCHA service could not connect, including after one normal page reload. No project draft or final entry has been saved on Devpost. Prepared field text is in [DEVPOST-ENTRY.md](DEVPOST-ENTRY.md).
+
 ## One sentence
 
 Crate helps independent booksellers pack two cultural pop-ups from one limited stock pool, using cultural evidence to propose relevant books while keeping reservations, editorial decisions, and packing manifests consistent.

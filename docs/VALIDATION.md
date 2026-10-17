@@ -12,6 +12,8 @@ Public prototype: [Crate](https://crate-books-ajnas.foamythyme32.chatgpt.site). 
 
 Browser policy prevented checking Chrome's download history. CSV content and stock-safe export behavior were verified by automated tests; a completed browser download was not independently confirmed. Live Qloo, external-agent interoperability with a real key, reader usefulness and customer results remain unverified.
 
+The published native MCP search tool was invoked from an external assistant on October 17, 2026 with the query `Kindred Octavia Butler`. It returned the explicit `QLOO_NOT_CONFIGURED` error and did not substitute sample results. This verifies tool discovery, dispatch and the missing-key boundary only; it is not a successful Qloo session.
+
 ## Reproducible inventory and export checks
 
 Run `node --test tests/csv.test.mjs` from the project directory. The test loads TypeScript through the locally installed compiler; no API key or external service is required.
@@ -40,6 +42,7 @@ With three participants, report each result and median/range as exploratory obse
 ## Live Qloo experiment: required before submission
 
 - Confirm a valid hackathon key against the documented hackathon host; resolve titles and authors without inventing identifiers. Store the key on the server.
+- Review and persist a starter catalogue of genuine title/author and programme-anchor mappings so judges can fetch fresh evidence without sixteen manual matches. Record provenance; do not embed synthetic ranks or claim unreviewed mappings are confirmed.
 - Measure resolved titles out of all twelve, ambiguous identities, and available candidates per event. Report missing titles rather than substituting unverified authors or LLM guesses.
 - Compare ordered candidate inventories within each query. Do not add raw affinity scores from different queries or label scores as probabilities.
 - Inspect one credible cross-domain recommendation that is not the event film's adaptation. Have a bookseller judge its usefulness without being told which source produced it where practical.
