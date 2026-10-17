@@ -44,7 +44,7 @@ The product is a bounded planning prototype. Automated software checks can verif
 ## Required links and final gates
 
 - Functional external demo URL: **pending**.
-- Public source repository URL: **pending**.
+- Public source repository URL: [AjnasNB/crate-qloo](https://github.com/AjnasNB/crate-qloo), verified public with GitHub-detected MIT license on October 17, 2026.
 - Public repository license: MIT; verify the repository recognizes the included `LICENSE` file.
 - Live Qloo evidence: **pending approved key and validation**.
 - Free, accessible judge access throughout the judging period: **pending deployment verification**.

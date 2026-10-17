@@ -8,7 +8,7 @@ registerHooks({ resolve(specifier, context, nextResolve) {
   if (context.parentURL?.endsWith("/lib/mcp.ts") && ["./planner", "./qloo"].includes(specifier)) return nextResolve(`${specifier}.ts`, context);
   return nextResolve(specifier, context);
 } });
-const { handleMcpRequest, MCP_TOOLS } = await import("../lib/mcp.ts");
+const { handleMcpRequest, MCP_TOOLS, MCP_MODERN_PROTOCOL } = await import("../lib/mcp.ts");
 
 const key = "test-secret-never-returned";
 const config = { apiKey: key, host: "https://hackathon.api.qloo.com" };
@@ -163,4 +163,51 @@ test("March fallback omits newer structuredContent while retaining text tool res
   const body = await (await handleMcpRequest(req, noKey)).json();
   assert.equal(body.result.structuredContent, undefined);
   assert.equal(JSON.parse(body.result.content[0].text).error.code, "QLOO_NOT_CONFIGURED");
+});
+
+function modernRequest(method, params = {}, headers = {}) {
+  const message = envelope(method, { ...params, _meta: {
+    "io.modelcontextprotocol/protocolVersion": MCP_MODERN_PROTOCOL,
+    "io.modelcontextprotocol/clientCapabilities": {},
+    "io.modelcontextprotocol/clientInfo": { name: "Sites test client", version: "1" },
+  } });
+  return new Request("https://crate.example/mcp", { method: "POST", headers: {
+    "Content-Type": "application/json", Accept: "application/json, text/event-stream",
+    "MCP-Protocol-Version": MCP_MODERN_PROTOCOL, "Mcp-Method": method,
+    ...(method === "tools/call" ? { "Mcp-Name": params.name } : {}), ...headers,
+  }, body: JSON.stringify(message) });
+}
+
+test("Sites canonical /mcp supports native discovery and tools without initialization", async () => {
+  const discover = await (await handleMcpRequest(modernRequest("server/discover"), noKey)).json();
+  assert.deepEqual(discover.result.supportedVersions, ["2026-07-28"]);
+  assert.deepEqual(discover.result.capabilities, { tools: {} });
+  assert.equal(discover.result.resultType, "complete");
+  assert.equal(discover.result._meta["io.modelcontextprotocol/serverInfo"].name, "crate");
+  const listed = await (await handleMcpRequest(modernRequest("tools/list"), noKey)).json();
+  assert.equal(listed.result.resultType, "complete");
+  assert.equal(listed.result.tools.length, 3);
+  const called = await (await handleMcpRequest(modernRequest("tools/call", { name: "crate_search_entity", arguments: { query: "Title", type: "book" } }), noKey)).json();
+  assert.equal(called.result.resultType, "complete");
+  assert.equal(called.result.isError, true);
+  assert.equal(called.result.structuredContent.error.code, "QLOO_NOT_CONFIGURED");
+});
+
+test("native metadata and mirrored headers must agree; unknown modern methods return404", async () => {
+  const methodMismatch = await handleMcpRequest(modernRequest("tools/list", {}, { "Mcp-Method": "tools/call" }), noKey);
+  assert.equal(methodMismatch.status, 400);
+  assert.equal((await methodMismatch.json()).error.code, -32020);
+  const wrongName = await handleMcpRequest(modernRequest("tools/call", { name: "crate_search_entity", arguments: {} }, { "Mcp-Name": "wrong_tool" }), noKey);
+  assert.equal((await wrongName.json()).error.code, -32020);
+  const missingMeta = await invoke(envelope("tools/list"), noKey, { "MCP-Protocol-Version": MCP_MODERN_PROTOCOL, "Mcp-Method": "tools/list" });
+  assert.equal(missingMeta.status, 400);
+  assert.equal((await missingMeta.json()).error.code, -32602);
+  const mismatch = await handleMcpRequest(modernRequest("tools/list", {}, { "MCP-Protocol-Version": "2025-11-25" }), noKey);
+  assert.equal((await mismatch.json()).error.code, -32020);
+  const unknown = await handleMcpRequest(modernRequest("not/implemented"), noKey);
+  assert.equal(unknown.status, 404);
+  assert.equal((await unknown.json()).error.code, -32601);
+  const encoded = `=?base64?${btoa("crate_search_entity")}?=`;
+  const validEncodedName = await handleMcpRequest(modernRequest("tools/call", { name: "crate_search_entity", arguments: { query: "Title", type: "book" } }, { "Mcp-Name": encoded }), noKey);
+  assert.equal((await validEncodedName.json()).result.structuredContent.error.code, "QLOO_NOT_CONFIGURED");
 });

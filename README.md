@@ -46,7 +46,7 @@ Live errors remain errors. The adapter never silently substitutes synthetic data
 
 ## Agent tool endpoint
 
-`POST /api/mcp` exposes an experimental stateless Model Context Protocol endpoint. External assistants can search cultural entities, rank a confirmed inventory, or obtain an exact packing plan through structured tool calls. These live tools use the same server-side Qloo adapter and do not return synthetic evidence. No model, external messaging, stock mutation or purchase is performed by this server.
+`POST /mcp` exposes an experimental stateless Model Context Protocol endpoint; `/api/mcp` remains an alias. External assistants can search cultural entities, rank a confirmed inventory, or obtain an exact packing plan through structured tool calls. These live tools use the same server-side Qloo adapter and do not return synthetic evidence. No model, external messaging, stock mutation or purchase is performed by this server.
 
 See [MCP setup and tool contracts](docs/MCP.md). Without an approved key, discovery works and live tool calls return a clear configuration error. The deterministic planner and an agent calling its tools are described separately.
 

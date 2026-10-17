@@ -2,7 +2,7 @@
 
 Developed by Ajnas N B. Experimental implementation; no MCP certification or live-Qloo validation is claimed.
 
-Crate exposes `/api/mcp` on its deployment origin as a stateless Streamable HTTP endpoint. An external MCP-capable language-model agent can discover and call the tools below. Crate itself does not run an LLM or claim that its deterministic UI is an AI agent.
+Crate exposes the canonical `/mcp` endpoint for the Sites-created private App/plugin, with `/api/mcp` retained as an alias. Both are stateless Streamable HTTP endpoints. An external MCP-capable language-model agent can discover and call the tools below. Crate itself does not run an LLM or claim that its deterministic UI is an AI agent.
 
 ## Tools and workflow
 
@@ -35,7 +35,19 @@ Example planning arguments after resolving and confirming identities:
 
 The placeholders are intentionally not UUIDs and fail validation. Use real search results; the server requires a Qloo key. Missing credentials or upstream failures return explicit tool errors and never synthetic evidence. Returned utility is application-defined ordinal rank points, not purchase likelihood or a demand forecast. A selected lineup describes an audience hypothesis, not every attendee or an artist affiliation.
 
-## Transport
+## Native Sites connection and protocol
+
+With `"mcp"` in the Site hosting capabilities, publishing through Sites creates a private App/plugin for the owner and republishes refresh its tool list. Sites authenticates forwarded MCP requests and checks that callers can view the Site. Reuse that private connection in ChatGPT or Codex; no second App, manual MCP configuration or separate MCP login is needed. If installation is not automatic, locate the Site-created plugin under Plugins → Personal → Created by you and choose Install or Connect. Installation is optional for using the web interface; actual tool availability must be checked in the client.
+
+Native clients use protocol `2026-07-28`, beginning with `server/discover` or calling tools directly. Discovery returns `supportedVersions: ["2026-07-28"]` and `capabilities: {"tools": {}}`. It does not require an initialize handshake. Each request includes the protocol and client capabilities in `params._meta`, together with matching `MCP-Protocol-Version` and `Mcp-Method` headers. Tool calls also include a matching `Mcp-Name` header. For example, POST this body to `/mcp` with `MCP-Protocol-Version: 2026-07-28` and `Mcp-Method: server/discover`, plus the JSON content type and JSON/SSE Accept header:
+
+```json
+{"jsonrpc":"2.0","id":1,"method":"server/discover","params":{"_meta":{"io.modelcontextprotocol/protocolVersion":"2026-07-28","io.modelcontextprotocol/clientCapabilities":{},"io.modelcontextprotocol/clientInfo":{"name":"Your agent","version":"1.0"}}}}
+```
+
+Native results include `resultType: "complete"` and server identity metadata. Missing required body metadata receives HTTP 400; header/body mismatches use `HeaderMismatch` (-32020). Unsupported versions use -32022 and list implemented versions. Unknown native methods return HTTP 404. These behaviors follow the current official [discovery](https://modelcontextprotocol.io/specification/2026-07-28/server/discover) and [Streamable HTTP](https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/streamable-http) contracts. Legacy discovery is retained through the workflow below.
+
+## Legacy transport
 
 Send a single JSON-RPC 2.0 message per POST with `Content-Type: application/json` and `Accept: application/json, text/event-stream`. Initialize first:
 
@@ -49,13 +61,13 @@ Send `notifications/initialized` without an ID, then `tools/list` and `tools/cal
 {"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"crate_search_entity","arguments":{"query":"Kindred Octavia Butler","type":"book"}}}
 ```
 
-Modern clients receive both `structuredContent` and a serialized JSON text block. March clients receive text content. Malformed JSON-RPC messages and unknown tools use protocol errors; tool argument, credential and upstream failures use `isError: true`. A feasible plan is not guaranteed: stock conflicts return `isError: true` with explicit planner diagnostics and an empty packing list, without silently relaxing pins.
+Native and June/November 2025 clients receive both `structuredContent` and a serialized JSON text block. March clients receive text content. Malformed JSON-RPC messages and unknown tools use protocol errors; tool argument, credential and upstream failures use `isError: true`. A feasible plan is not guaranteed: stock conflicts return `isError: true` with explicit planner diagnostics and an empty packing list, without silently relaxing pins.
 
 ## Deployment and limits
 
 The existing server `QLOO_API_KEY` and allowlisted `QLOO_API_BASE` configuration are reused. Secrets are never sent to clients. The endpoint adds no second secret, user account or external credential. Initialization and discovery work before the Qloo key arrives; live tools remain unavailable until it is configured.
 
-Only same-origin browser origins are accepted; native MCP clients normally omit Origin. Bodies are capped at 32 KiB, inventories at 18 titles, stalls at two, anchors at four per stall and slots at six per stall. Existing Qloo response-size caps and deadlines apply. This public experimental endpoint has no authenticated sessions or durable global quota counter. Deployment-level abuse/rate controls and upstream hard quotas must be configured before unrestricted public live use; a module-local counter would not supply that guarantee.
+Only same-origin browser origins are accepted; native MCP clients normally omit Origin. Bodies are capped at 32 KiB, inventories at 18 titles, stalls at two, anchors at four per stall and slots at six per stall. Existing Qloo response-size caps and deadlines apply. Sites supplies access checks for its private plugin connection; the application adds no protocol-level sessions or durable global quota counter. Deployment-level abuse/rate controls and upstream hard quotas must be configured before unrestricted public live use; a module-local counter would not supply that guarantee.
 
 The endpoint follows the published [Streamable HTTP transport](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports), [lifecycle](https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle), and [tools](https://modelcontextprotocol.io/specification/2025-11-25/server/tools) contracts for the implemented subset. It is not a claim of support for every MCP feature.
 
