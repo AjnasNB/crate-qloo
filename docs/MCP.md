@@ -72,3 +72,16 @@ Only same-origin browser origins are accepted; native MCP clients normally omit 
 The endpoint follows the published [Streamable HTTP transport](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports), [lifecycle](https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle), and [tools](https://modelcontextprotocol.io/specification/2025-11-25/server/tools) contracts for the implemented subset. It is not a claim of support for every MCP feature.
 
 Run `node --test tests/mcp.test.mjs`. Tests use injected mock upstream responses; they do not establish live Qloo access or external-agent interoperability.
+
+## Live verification after access arrives
+
+The separate `tests/live-smoke.mjs` is a manual integration check, not part of the 54 mock/unit tests. It requires a local JSON file containing genuinely reviewed Qloo book and programme identities. It never guesses IDs or accepts a client API key; the configured server owns its credential.
+
+```sh
+node --experimental-strip-types tests/live-smoke.mjs --help
+node --experimental-strip-types tests/live-smoke.mjs --base https://crate-books-ajnas.foamythyme32.chatgpt.site --input /absolute/path/to/reviewed-input.json
+```
+
+The default path makes at most three Insights calls to verify inventory evidence, changed-programme results, exact allocation, stock-safe repair and exports. It reports external MCP verification as not run. Use the installed Crate native tool with the same reviewed inputs for actual external-assistant planning proof.
+
+Optional `--mcp-http` adds a canonical MCP check only when that endpoint is accessible to the caller. Sites normally requires OAuth at `/mcp`; an anonymous HTTP 401 is reported as `AUTH_REQUIRED`, separately from Qloo failures. The script neither extracts authentication tokens nor uses an alternate route to evade that boundary. Non-adaptation relevance and reader usefulness remain explicit manual evaluations.

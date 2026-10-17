@@ -1,0 +1,60 @@
+name: Bookseller workflow feedback
+description: Report an obstacle while packing, repairing, or exporting two stalls.
+title: "[Workflow] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Help us understand where Crate gets in the way of your packing task.
+
+        This issue will be public. Redact private data before posting. Use a small, fictional example rather than real stock records. Do not attach inventory files or include personal contacts, customer or staff details, API keys, passwords, or other secrets.
+  - type: textarea
+    id: intended-task
+    attributes:
+      label: Intended task
+      description: What were you trying to accomplish with the two stalls?
+      placeholder: "For example: pack both stalls from shared stock while keeping shop reserves safe."
+    validations:
+      required: true
+  - type: textarea
+    id: blocker
+    attributes:
+      label: Blocker
+      description: Where did the workflow stop you, confuse you, or require extra work?
+      placeholder: Name the step or control, and describe the obstacle.
+    validations:
+      required: true
+  - type: textarea
+    id: expected-result
+    attributes:
+      label: Expected result
+      description: What should have happened for your task to succeed?
+    validations:
+      required: true
+  - type: textarea
+    id: actual-result
+    attributes:
+      label: Actual result
+      description: What happened instead? Include any error text after redacting private data.
+    validations:
+      required: true
+  - type: textarea
+    id: sanitized-reproduction
+    attributes:
+      label: Minimal sanitized reproduction
+      description: Give the smallest fictional example and steps that show the problem. State whether you used Simulation or Live Qloo. If it cannot be reproduced, say so.
+      placeholder: |
+        Source mode: Simulation / Live Qloo
+        Fictional stock: Book A has 1 copy and 0 reserved; Book B has 2 copies and 1 reserved.
+        Stall capacities:
+        1. Pack both stalls.
+        2. Describe any pin, veto, locked crate, or stock change.
+        3. Describe the repair or export action that showed the problem.
+    validations:
+      required: true
+  - type: input
+    id: browser-version
+    attributes:
+      label: Browser and version (optional)
+      description: Include the device type if the problem depends on screen size. Leave out identifying details.
+      placeholder: "For example: Firefox 143 on desktop."

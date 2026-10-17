@@ -2,13 +2,15 @@
 
 **Pack books for the crowd. Developed by Ajnas N B.**
 
-[Try the public prototype](https://crate-books-ajnas.foamythyme32.chatgpt.site) · [Demo video and editable source](https://github.com/AjnasNB/crate-qloo/releases/tag/v0.1.0-prototype) · [Quality record](docs/QUALITY.md)
+[Try the public prototype](https://crate-books-ajnas.foamythyme32.chatgpt.site) · [Narrated motion demo and editable source](https://github.com/AjnasNB/crate-qloo/releases/tag/v0.2.0-motion-prototype) · [Devpost entry](https://devpost.com/software/crate-6jkox0) · [Quality record](docs/QUALITY.md)
 
 Crate is a planning desk for an independent bookstore sending two separately staffed cultural stalls out at the same time. It allocates a shared book inventory, protects shop reserves, and repairs packing lists when stock or editorial decisions change.
 
 ## Current status
 
-The public source contains a working allocation engine, an interactive synthetic demonstration, and a server-side Qloo adapter. **Qloo access has been requested; no live key or live validation is available yet.** Sample rankings are hand-authored or deterministic simulation fixtures, not Qloo data. This version does not call a language model. It is not yet a verified hackathon submission.
+The public source contains a working allocation engine, an interactive synthetic demonstration, and a server-side Qloo adapter. **Qloo access has been requested; no live key or live validation is available yet.** Sample rankings are hand-authored or deterministic simulation fixtures, not Qloo data. This version does not call a language model. Devpost confirmed submission on October 17, 2026 with this limitation disclosed. A submission receipt does not establish eligibility or successful live integration.
+
+Report a workflow blocker through the [sanitized feedback form](https://github.com/AjnasNB/crate-qloo/issues/new?template=workflow-feedback.yml). Do not include private stock files, customer details or credentials.
 
 ## Run locally
 

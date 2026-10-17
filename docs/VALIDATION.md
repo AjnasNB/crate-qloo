@@ -39,6 +39,18 @@ Opening language: "We are evaluating an early bookstore packing tool, not your p
 
 With three participants, report each result and median/range as exploratory observations; do not infer population effects. Retain disagreements. Do not invent quotes or treat politeness as willingness to adopt.
 
+## Workflow feedback and pilot checklist
+
+Report a reproducible obstacle through the public [bookseller workflow feedback form](https://github.com/AjnasNB/crate-qloo/issues/new?template=workflow-feedback.yml). Describe the intended task, blocker, expected and actual result, and a minimal sanitized reproduction. Redact private data; use fictional examples and do not attach inventory files, personal contacts, or secrets. A submitted issue is feedback, not a completed customer pilot.
+
+Use the [fifteen-minute customer task](#fifteen-minute-customer-task) for a consented pilot, with these workflow checks:
+
+- Pack two simultaneously departing stalls from one shared inventory; record whether the source is Simulation or Live Qloo.
+- Verify that a scarce copy is not promised twice and shop reserves stay available to the shop.
+- Lock one packed crate, remove stock used by the other crate, and repair. Check that the locked crate stays unchanged; an infeasible lock must produce a clear conflict.
+- Export both manifests and compare titles, quantities, capacity and source labels with the displayed plan.
+- Record the actual blocker or outcome, including edits and disagreements. Treat any result as unverified until the task has been observed.
+
 ## Live Qloo experiment: required before submission
 
 - Confirm a valid hackathon key against the documented hackathon host; resolve titles and authors without inventing identifiers. Store the key on the server.
