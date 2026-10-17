@@ -15,7 +15,7 @@ Reviewed on October 17, 2026. This ledger records actual source inspection and l
 | Check | Result | Evidence and limit |
 | --- | --- | --- |
 | 1. Full automated regression suite | PASS, local | `node --test tests/planner.test.mjs tests/csv.test.mjs tests/qloo.test.mjs tests/mcp.test.mjs`: **54 passed, zero failed**. Breakdown: 13 CSV, 13 planner, 14 Qloo, 14 MCP. Qloo and MCP use mocks. |
-| 2. Types, lint and final build | PENDING final bundle | Full `tsc --noEmit --incremental false --pretty false` passed. ESLint passed for `lib/planner.ts`, `lib/qloo.ts`, `lib/mcp.ts`, `lib/csv.ts`, `lib/sample.ts` and `tests`. The prior production build is documented in [VALIDATION.md](VALIDATION.md); final frontend changes require a fresh integrated build. No competing build was launched during this review. |
+| 2. Types, lint and final build | PASS | Full `tsc --noEmit --incremental false --pretty false` passed. ESLint passed for the frontend, backend and tests. After all code changes settled, the integrated production build passed. Site version 3 published revision `e4d5d3412ed6d5149739708d9d2d711300b0a315`; its hosted packing and named-dialog flow were verified in Chrome. |
 | 3. Global stock allocation | PASS, local | The scarce-title test catches greedy allocation; two-copy/reserve tests and the eighteen-title/twelve-slot bound pass. The independent exhaustive oracle agrees with the exact solver on all 220 seeded cases. This proves the tested objective and constraints, not recommendation quality. |
 | 4. Inventory and reserve consistency | PASS, local | Negative/fractional inventory is rejected. The new regression rejects reserve greater than quantity even for unused titles. MCP rejects this before upstream I/O. Availability cannot create copies. |
 | 5. Pins, vetoes and protected crates | PASS, unit/source | Conflicting pins/vetoes, over-capacity pins and unavailable pinned stock fail with diagnostics. UI source maps a locked crate to its current assignments as hard pins and excludes every other title; it does not silently unlock a conflicting crate. A fresh browser check of the final frontend is outside this review. |
@@ -33,7 +33,7 @@ Reviewed on October 17, 2026. This ledger records actual source inspection and l
 
 ## Remaining acceptance gates
 
-Run the integrated production build after frontend changes settle and verify the final public deployment. Before exposing a real key, confirm ignored local secret files and the upstream hard quota or deployment abuse controls. Then perform the live experiment in [VALIDATION.md](VALIDATION.md), including one real external-agent tool session and a changed-programme query. If inventory coverage or useful cultural differences fail, revise the premise rather than substituting fixtures.
+The integrated production build and version 3 publication are verified. Before exposing a real key, confirm ignored local secret files and the upstream hard quota or deployment abuse controls. Then perform the live experiment in [VALIDATION.md](VALIDATION.md), including one real external-agent tool session and a changed-programme query. If inventory coverage or useful cultural differences fail, revise the premise rather than substituting fixtures.
 
 Qloo matches works, not promised ISBN editions. The live adapter requires unique confirmed Qloo book entities; separate edition/SKU rows mapping to the same work currently need consolidation before a live request. This is a bounded prototype limitation, not evidence that those editions have distinct cultural affinities.
 

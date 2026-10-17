@@ -2,7 +2,7 @@
 
 **Pack books for the crowd. Developed by Ajnas N B.**
 
-[Try the public prototype](https://crate-books-ajnas.foamythyme32.chatgpt.site) · [Read the sixteen-round idea review](docs/IDEATION.md)
+[Try the public prototype](https://crate-books-ajnas.foamythyme32.chatgpt.site) · [Demo video and editable source](https://github.com/AjnasNB/crate-qloo/releases/tag/v0.1.0-prototype) · [Quality record](docs/QUALITY.md)
 
 Crate is a planning desk for an independent bookstore sending two separately staffed cultural stalls out at the same time. It allocates a shared book inventory, protects shop reserves, and repairs packing lists when stock or editorial decisions change.
 

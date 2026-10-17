@@ -54,7 +54,7 @@ One page, `/`: first visit → inspect labeled sample stock → Pack the stalls 
 
 ## Independent local browser evidence
 
-The independently operated local Chrome run verified the exact actions recorded above: sample packing; modal heading focus, Shift+Tab containment and Escape restoration; invalid-file error recovery; locked-crate stock repair; narrow-screen geometry; and print-header provenance. The tested flow produced an empty console-error list. These results apply to the local tested build, not automatically to every public deployment or future change.
+The independently operated local Chrome run verified the exact actions recorded above: sample packing; modal heading focus, Shift+Tab containment and Escape restoration; invalid-file error recovery; locked-crate stock repair; narrow-screen geometry; and print-header provenance. The tested flow produced an empty console-error list. Following publication, the public version 3 was also checked for successful hydration, eight placements, the source-labeled action log and named stock-dialog heading focus. Other local checks do not automatically establish every hosted edge case or future change.
 
 Workspace screenshots `crate-packed-v3.jpg`, `crate-mobile-stock-v3.jpg`, and `crate-evidence-v3.jpg` were visually reviewed. The desktop stall hierarchy and source strip remain legible; the evidence view explicitly discloses simulation and pending API access; the narrow stock table uses internal horizontal scrolling. No further visual changes were warranted from those images.
 
