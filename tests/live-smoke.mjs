@@ -5,6 +5,7 @@
  */
 import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
+import { pathToFileURL } from 'node:url';
 import { solve } from '../lib/planner.ts';
 import { validateEvidenceInput } from '../lib/qloo.ts';
 import { packingCsv } from '../lib/csv.ts';
@@ -116,6 +117,17 @@ function checkPlan(plan, books, events, evidence) {
 
 function same(left, right) { return JSON.stringify(left) === JSON.stringify(right); }
 
+export function validateChangedProgramme(input) {
+  const initial = validateEvidenceInput(input);
+  const targetIndex = initial.events.findIndex(event => event.id === input.changedEvent?.id);
+  assert.ok(targetIndex >= 0, 'changedEvent must identify one existing stall.');
+  const variantEvents = input.events.map((event, index) => index === targetIndex ? { ...event, anchors: input.changedEvent.anchors } : event);
+  const variant = validateEvidenceInput({ books: input.books, events: variantEvents });
+  const signalIds = event => event.anchors.map(anchor => anchor.entityId).sort();
+  assert.ok(!same(signalIds(initial.events[targetIndex]), signalIds(variant.events[targetIndex])), 'Provide a genuinely changed, confirmed programme; UUID case and anchor order do not change its signal.');
+  return { targetIndex, variantEvents };
+}
+
 async function run(options) {
   assert.ok((await stat(options.inputPath)).size <= 32_768, 'Input must not exceed 32 KiB.');
   const rawInput = await readFile(options.inputPath, 'utf8');
@@ -123,12 +135,7 @@ async function run(options) {
   const input = JSON.parse(rawInput);
   assert.equal(input.review?.identitiesConfirmed, true, 'Manually review title/author and programme identities first. No IDs are auto-confirmed.');
   assert.equal(input.events?.length, 2, 'Use two simultaneously departing stalls.');
-  validateEvidenceInput(input);
-  const targetIndex = input.events.findIndex(event => event.id === input.changedEvent?.id);
-  assert.ok(targetIndex >= 0, 'changedEvent must identify one existing stall.');
-  const variantEvents = input.events.map((event, index) => index === targetIndex ? { ...event, anchors: input.changedEvent.anchors } : event);
-  validateEvidenceInput({ books: input.books, events: variantEvents });
-  assert.ok(!same(input.events[targetIndex].anchors.map(anchor => anchor.entityId), variantEvents[targetIndex].anchors.map(anchor => anchor.entityId)), 'Provide a genuinely changed, confirmed programme.');
+  const { targetIndex, variantEvents } = validateChangedProgramme(input);
   const config = await request(options.base, '/api/config');
   assert.equal(config.configured, true, 'Server Qloo key is not configured. Stop; no fixture fallback.');
   assert.deepEqual(Object.keys(config).sort(), ['configured', 'host']);
@@ -196,11 +203,13 @@ async function run(options) {
   if (!ranksChanged || !assignmentsChanged || !repair) process.exitCode = 2;
 }
 
-try {
-  const options = argumentsOf(process.argv.slice(2));
-  if (!options) console.log(help);
-  else await run(options);
-} catch (error) {
-  console.error(`Live smoke check stopped: ${error instanceof Error ? error.message : 'Unknown error'}`);
-  process.exitCode = 1;
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  try {
+    const options = argumentsOf(process.argv.slice(2));
+    if (!options) console.log(help);
+    else await run(options);
+  } catch (error) {
+    console.error(`Live smoke check stopped: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    process.exitCode = 1;
+  }
 }

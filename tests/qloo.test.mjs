@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { parseInventoryCsv } from '../lib/csv.ts';
+import { validateChangedProgramme } from './live-smoke.mjs';
 import {
   QLOO_LIMITS, QlooError, configFromValues, publicConfig, validateSearch,
   validateEvidenceInput, parseSearchResponse, parseInsightResponse,
@@ -212,4 +213,29 @@ test('zero matches remain explicitly unknown and a later event failure returns n
   let calls = 0;
   await expectError(getQlooEvidence(payload, config, { fetchImpl: async () => ++calls === 1 ? json({ results: { entities: [row(ids.first)] } }) : json({}, { status: 429 }) }), 'QLOO_RATE_LIMITED', 429);
   assert.equal(calls, 2);
+});
+
+test('documented explainability warning preserves rankings without claiming an available explanation', async () => {
+  const evidence = await getQlooEvidence(input(), config, { fetchImpl: async () => json({
+    success: true,
+    results: { entities: [row(ids.first)] },
+    query: { explainability: { warning: 'Explainability could not be computed' } },
+  }) });
+  assert.deepEqual(evidence.profiles.cinema.orderedIds, ['book-one']);
+  assert.equal(evidence.profiles.cinema.trace.rawContext.explainabilityAvailable, false);
+  assert.ok(evidence.profiles.cinema.trace.warnings.some(warning => warning.includes('explainability is unavailable')));
+});
+
+test('live smoke requires changed normalized signal identities before making requests', () => {
+  const original = input();
+  original.events[0].anchors[0].entityId = 'abcdef00-0000-4000-8000-000000000000';
+  original.events[0].anchors.push({ name: 'Selected artist', type: 'artist', entityId: ids.artist });
+  for (const anchors of [
+    original.events[0].anchors.map(anchor => ({ ...anchor, entityId: anchor.entityId.toUpperCase() })),
+    [...original.events[0].anchors].reverse(),
+  ]) {
+    assert.throws(() => validateChangedProgramme({ ...original, changedEvent: { id: 'cinema', anchors } }), /genuinely changed/);
+  }
+  const changed = { id: 'cinema', anchors: [{ name: 'Different selected film', type: 'movie', entityId: ids.foreign }] };
+  assert.equal(validateChangedProgramme({ ...original, changedEvent: changed }).targetIndex, 0);
 });

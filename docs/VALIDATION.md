@@ -14,6 +14,12 @@ Browser policy prevented checking Chrome's download history. CSV content and sto
 
 The published native MCP search tool was invoked from an external assistant on October 17, 2026 with the query `Kindred Octavia Butler`. It returned the explicit `QLOO_NOT_CONFIGURED` error and did not substitute sample results. This verifies tool discovery, dispatch and the missing-key boundary only; it is not a successful Qloo session.
 
+## Later live-readiness review, October 17, 2026
+
+Two defects were corrected after the version 3 review: a documented Qloo `query.explainability.warning` now marks optional explanations unavailable while preserving returned ranks, and the manual smoke check rejects UUID case or anchor-order changes that leave the actual upstream signal unchanged. The full updated suite passes 56/56 checks (13 CSV, 13 planner, 16 Qloo/input checks, 14 MCP); TypeScript and targeted lint pass. Publication of this correction is tracked separately from the earlier version 3 browser evidence.
+
+No Qloo key was present in the authorized mailbox check or configured hosted runtime. The access request receipt remains confirmed. The authorized follow-up to the hackathon manager was sent on October 17 and Gmail's sent record verified. No new live Qloo success or Devpost live-status update is claimed.
+
 ## Reproducible inventory and export checks
 
 Run `node --test tests/csv.test.mjs` from the project directory. The test loads TypeScript through the locally installed compiler; no API key or external service is required.
@@ -51,7 +57,7 @@ Use the [fifteen-minute customer task](#fifteen-minute-customer-task) for a cons
 - Export both manifests and compare titles, quantities, capacity and source labels with the displayed plan.
 - Record the actual blocker or outcome, including edits and disagreements. Treat any result as unverified until the task has been observed.
 
-## Live Qloo experiment: required before submission
+## Required live Qloo validation
 
 - Confirm a valid hackathon key against the documented hackathon host; resolve titles and authors without inventing identifiers. Store the key on the server.
 - Review and persist a starter catalogue of genuine title/author and programme-anchor mappings so judges can fetch fresh evidence without sixteen manual matches. Record provenance; do not embed synthetic ranks or claim unreviewed mappings are confirmed.

@@ -183,11 +183,13 @@ export function parseInsightResponse(value: unknown, books: EvidenceInput["books
     seen.add(parsed.entityId);
     return { id: localId, entityId: parsed.entityId, name: parsed.name, rank: index + 1 };
   });
+  const explainability = object(value.query) && object(value.query.explainability) ? value.query.explainability : undefined;
   return {
     orderedIds: rows.map((row) => row.id),
     rows,
     missingIds: books.filter((book) => !seen.has(book.entityId)).map((book) => book.id),
-    explainabilityAvailable: object(value.query) && object(value.query.explainability),
+    // Qloo returns this object with warning when explanations cannot be computed.
+    explainabilityAvailable: Boolean(explainability && !("warning" in explainability)),
   };
 }
 
@@ -247,7 +249,7 @@ export async function getQlooEvidence(input: unknown, config: QlooConfig, runtim
     const parsed = parseInsightResponse(result.data, books);
     retrievedAt = result.retrievedAt;
     const warnings = parsed.missingIds.length ? [`${parsed.missingIds.length} inventory candidates were not returned. Their affinity is unknown.`] : [];
-    if (!parsed.explainabilityAvailable) warnings.push("Optional explainability metadata was not supplied; returned order is used without invented explanations.");
+    if (!parsed.explainabilityAvailable) warnings.push("Optional explainability is unavailable or carries an upstream warning; returned order is used without invented explanations.");
     profiles[event.id] = { orderedIds: parsed.orderedIds, candidateCount: books.length, trace: { host: config.host, path: "/v2/insights", parameters, responseHash: result.responseHash, retrievedAt, warnings, rawContext: { anchors: event.anchors, results: parsed.rows, missingIds: parsed.missingIds, explainabilityAvailable: parsed.explainabilityAvailable } } };
   }
   return { mode: "qloo" as const, retrievedAt, candidateIds: books.map((book) => book.id), profiles, notes: ["Live Qloo response order only. Raw affinity scores are neither combined nor compared across requests.", "The selected artist/film interests describe an audience hypothesis, not every attendee or predicted sales.", "Missing candidates have unknown affinity; they are not negative evidence."] };
