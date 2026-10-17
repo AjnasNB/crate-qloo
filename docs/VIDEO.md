@@ -18,6 +18,8 @@ The repair example uses the copied exact planner: twelve titles, twenty copies, 
 
 The source retains seven nonblocking timeline-structure warnings and documented intentional image crops. Local preview is a convenience; final encoded-video QA is separate from Studio loading. The public ZIP excludes credentials, internal instructions, caches, private captures, intermediary videos and proprietary font programs. Our code includes the MIT license; third-party code retains its included notices.
 
+The local Studio browser preview remained at zero duration with Play disabled after a supported server restart, despite the server returning HTTP 200 and the source checker passing. Browser editing/playback is therefore not verified. The published MP4 is independently decoded and inspected; its and the ZIP's GitHub asset digests match the hashes below.
+
 ## SHA-256
 
 ```text
