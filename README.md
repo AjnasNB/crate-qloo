@@ -2,7 +2,7 @@
 
 **Pack books for the crowd. Developed by Ajnas N B.**
 
-[Try Crate on Cloudflare](https://crate-qloo.ajnasnb.workers.dev) · [Narrated motion demo and editable source](https://github.com/AjnasNB/crate-qloo/releases/tag/v0.2.0-motion-prototype) · [Devpost entry](https://devpost.com/software/crate-6jkox0) · [Quality record](docs/QUALITY.md)
+[Try Crate on Cloudflare](https://crate-qloo.ajnasnb.workers.dev) · [Watch the live Qloo motion film](https://crate-qloo.ajnasnb.workers.dev/demo) · [Devpost entry](https://devpost.com/software/crate-6jkox0) · [Quality record](docs/QUALITY.md)
 
 Crate is a planning desk for an independent bookstore sending two separately staffed cultural stalls out at the same time. It allocates a shared book inventory, protects shop reserves, and repairs packing lists when stock or editorial decisions change.
 
@@ -14,7 +14,7 @@ Simulation remains explicitly labeled and uses hand-authored or deterministic fi
 
 Report a workflow blocker through the [sanitized feedback form](https://github.com/AjnasNB/crate-qloo/issues/new?template=workflow-feedback.yml). Do not include private stock files, customer details or credentials.
 
-UTF-8 CSV file links, wrapped print layouts and warning-only stale printing are included. All **69 tests** pass. [Export/print verification](docs/EXPORT-QA.md) records public payload checks, A4/Letter renders and the native-browser save check that still needs manual confirmation. [Novelty and competing approaches](docs/NOVELTY.md) explains the contribution and its unmeasured customer value.
+UTF-8 CSV file links, wrapped print layouts and warning-only stale printing are included. All **79 tests** pass. [Export/print verification](docs/EXPORT-QA.md) records actual saved CSV/JSON files, inspected A4/Letter PDFs and the remaining native-dialog boundary. [Novelty and competing approaches](docs/NOVELTY.md) explains the contribution and its unmeasured customer value.
 
 ## Run locally
 
@@ -26,6 +26,8 @@ npm run dev
 ```
 
 Open the printed local URL, normally http://localhost:5173. No key is needed for the synthetic demonstration.
+
+For the `/demo` player, run `npm run demo:prepare` once. It copies the local rendered film or downloads the pinned public release, verifies its exact size and SHA-256, and writes the ignored MP4 into `public/media/`. Production builds run this step automatically. The editable film source and reproduction instructions are in [film/README.md](film/README.md); [the video record](docs/VIDEO.md) distinguishes the current live film from historical synthetic prototypes.
 
 On Windows, if a package-manager shim fails, invoke npm's installed JavaScript entry point with Node. The portable starter also supports `npm run install:ci` for dependency setup.
 
@@ -98,14 +100,14 @@ The app uses React, TypeScript and Vinext with the official Cloudflare Vite plug
 
 ## Project evidence
 
-- [Fifteen rounds of critique and refinement](docs/IDEATION.md)
+- [Sixteen rounds of critique and refinement](docs/IDEATION.md)
 - [Live integration gates and bookseller pilot](docs/VALIDATION.md)
 - [Submission draft and honest readiness checklist](docs/SUBMISSION.md)
 - [Qloo challenge](https://qloo.devpost.com/)
 - [Qloo API access and developer guide](https://docs.qloo.com/reference/qloo-llm-hackathon-developer-guide)
 - [Qloo affinity interpretation](https://github.com/qloo/docs-public/blob/main/docs/interpreting-affinity-scores.md)
 
-Qloo API responses are not included in this repository. Bibliographic names are factual references; original typographic UI tiles are not publisher cover artwork. Sample events imply no artist or filmmaker participation or endorsement.
+Full Qloo API responses are not included in this repository. The film retains a minimal derived rank record and public app captures for reproducibility. Bibliographic names are factual references; original typographic UI tiles are not publisher cover artwork. Sample events imply no artist or filmmaker participation or endorsement.
 
 ## License
 

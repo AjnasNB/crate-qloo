@@ -1,0 +1,219 @@
+{
+  "verifiedAt": "2026-10-22T09:23:28.944Z",
+  "developedBy": "Ajnas N B",
+  "application": {
+    "url": "https://crate-qloo.ajnasnb.workers.dev",
+    "source": "0c888d3",
+    "workerVersion": "57f55a99-10cb-4947-9514-31462a49c05a",
+    "tests": {
+      "passed": 79,
+      "failed": 0
+    },
+    "typecheck": "pass",
+    "targetedLint": "pass",
+    "productionBuild": "pass"
+  },
+  "film": {
+    "url": "https://crate-qloo.ajnasnb.workers.dev/demo",
+    "release": "https://github.com/AjnasNB/crate-qloo/releases/download/v0.3.0-live-motion/crate-live-demo.mp4",
+    "bytes": 17455515,
+    "sha256": "db971723683eb6ae3f8bb0865f025fe9926566e453c1f7a5fc990b7746763db8",
+    "frames": 995,
+    "duration": 33.166667,
+    "format": "1920x1080 H.264/yuv420p 30 fps; AAC 48 kHz stereo",
+    "fullDecode": "pass",
+    "gates": [
+      "G0",
+      "G2",
+      "G3",
+      "G5"
+    ],
+    "independentVisualReview": {
+      "exactSecondSamples": 34,
+      "criticalFullFrames": 10
+    },
+    "fullHostedPlayback": "Completed; visible captions, unmuted, no media error",
+    "navigation": "Both full-document return links reached packing desk",
+    "audioLimit": "Measured and transcribed, not perceptually heard"
+  },
+  "media": [
+    {
+      "asset": "crate-live-demo.mp4",
+      "status": 200,
+      "type": "video/mp4",
+      "bytes": 17455515,
+      "sha256": "db971723683eb6ae3f8bb0865f025fe9926566e453c1f7a5fc990b7746763db8"
+    },
+    {
+      "asset": "crate-live-demo-poster.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 148105,
+      "sha256": "a945b9cfa8c94661907730cfbf3a41750f7cf6d4554a1230dc095eacaf253a1a"
+    },
+    {
+      "asset": "crate-live-demo.vtt",
+      "status": 200,
+      "type": "text/vtt",
+      "bytes": 754,
+      "sha256": "6cb551dd24ef2deb31addd33165e793dd889bf919ce398573fef043bead181a3"
+    }
+  ],
+  "ranges": {
+    "local": {
+      "base": "http://127.0.0.1:8789",
+      "verifiedAt": "2026-10-22T09:14:49.742Z",
+      "checks": [
+        {
+          "range": "bytes=0-1023",
+          "status": 206,
+          "contentRange": "bytes 0-1023/17455515",
+          "bytes": 1024,
+          "exactBytes": true
+        },
+        {
+          "range": "bytes=1000000-1000255",
+          "status": 206,
+          "contentRange": "bytes 1000000-1000255/17455515",
+          "bytes": 256,
+          "exactBytes": true
+        },
+        {
+          "range": "bytes=-1024",
+          "status": 206,
+          "contentRange": "bytes 17454491-17455514/17455515",
+          "bytes": 1024,
+          "exactBytes": true
+        },
+        {
+          "range": "bytes=17455003-",
+          "status": 206,
+          "contentRange": "bytes 17455003-17455514/17455515",
+          "bytes": 512,
+          "exactBytes": true
+        }
+      ],
+      "head": {
+        "status": 200,
+        "declaredLength": null,
+        "bodyBytes": 0,
+        "etag": "\"0f7f23634296da299be2ed3b78e8551a\""
+      },
+      "unsatisfiable": {
+        "status": 416,
+        "contentRange": "bytes */17455515"
+      },
+      "ifRangeMismatch": 200,
+      "conditional": 304
+    },
+    "public": {
+      "base": "https://crate-qloo.ajnasnb.workers.dev",
+      "verifiedAt": "2026-10-22T09:17:59.431Z",
+      "checks": [
+        {
+          "range": "bytes=0-1023",
+          "status": 206,
+          "contentRange": "bytes 0-1023/17455515",
+          "bytes": 1024,
+          "exactBytes": true
+        },
+        {
+          "range": "bytes=1000000-1000255",
+          "status": 206,
+          "contentRange": "bytes 1000000-1000255/17455515",
+          "bytes": 256,
+          "exactBytes": true
+        },
+        {
+          "range": "bytes=-1024",
+          "status": 206,
+          "contentRange": "bytes 17454491-17455514/17455515",
+          "bytes": 1024,
+          "exactBytes": true
+        },
+        {
+          "range": "bytes=17455003-",
+          "status": 206,
+          "contentRange": "bytes 17455003-17455514/17455515",
+          "bytes": 512,
+          "exactBytes": true
+        }
+      ],
+      "head": {
+        "status": 200,
+        "declaredLength": null,
+        "bodyBytes": 0,
+        "etag": "\"e4af16d940d5b6f1e7e77ebccb5b539f\""
+      },
+      "unsatisfiable": {
+        "status": 416,
+        "contentRange": "bytes */17455515"
+      },
+      "ifRangeMismatch": 200,
+      "conditional": 304
+    },
+    "initialFailure": "Asset-first handler returned 200/full file for Range; fixed by exact-path streaming",
+    "limit": "Late seeks discard prefix internally; no storage-level range read",
+    "latestDeploymentProbe": {
+      "version": "57f55a99-10cb-4947-9514-31462a49c05a",
+      "verifiedAt": "2026-10-22T09:25:40.268Z",
+      "checks": [
+        {
+          "range": "bytes=0-1023",
+          "status": 206,
+          "bytes": 1024,
+          "exactBytes": true
+        },
+        {
+          "range": "bytes=17454491-17455514",
+          "status": 206,
+          "bytes": 1024,
+          "exactBytes": true
+        }
+      ]
+    }
+  },
+  "qloo": {
+    "configured": true,
+    "profiles": {
+      "a": 12,
+      "b": 12
+    },
+    "browserSnapshot": "2026-10-22T09:21:25.863Z",
+    "packedPlacements": 8,
+    "changedProgramme": "Rank and allocation changes pass",
+    "mcpHttp": "pass",
+    "lockedCrateRepair": "pass"
+  },
+  "exports": {
+    "savedCsvJson": "Parsed and hash-checked",
+    "realPlanPdf": {
+      "a4": 2,
+      "letter": 2,
+      "visualReview": "All four pages"
+    },
+    "additionalFixturePages": 19,
+    "method": "Actual PrintManifests/CSS rendered with WeasyPrint 70",
+    "limit": "Completed native Chrome saving/print dialogs and physical printing unverified"
+  },
+  "devpost": {
+    "url": "https://devpost.com/software/crate-6jkox0",
+    "status": "Submitted",
+    "steps": "5/5",
+    "exactSavedStory": true,
+    "filmLinks": 2,
+    "posterLoaded": true,
+    "liveEvidenceImageLoaded": true,
+    "soleCredit": true
+  },
+  "cleanup": {
+    "ownedTabs": "closed",
+    "ownedPreviewServers": "stopped",
+    "caches": "Automatic approval review rejected deletion: blocked by policy; no deletion attempted again"
+  },
+  "limits": [
+    "Customer adoption, reader relevance, time savings and sales effects unmeasured",
+    "No contest winning probability established",
+    "Native browser saving and printing remain unverified"
+  ]
+}
