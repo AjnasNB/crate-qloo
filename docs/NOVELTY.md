@@ -27,7 +27,7 @@ The [official rules](https://qloo.devpost.com/rules) weight implementation, desi
 ## Judge walkthrough
 
 1. Keep the stock fixed, change a film interest, confirm its real identity, and show the fresh Qloo order and changed allocation. This demonstrates Qloo's contribution.
-2. Lock Soul & City, remove The Dispossessed from available stock, and repair. Show Kindred replacing it while all four protected placements remain unchanged.
+2. Reload to reset to the starter programmes, choose live Qloo and pack. Lock Soul & City, remove The Dispossessed from available stock, and repair. Show Kindred replacing it while all four protected placements remain unchanged.
 3. Inspect the live snapshot and source-labeled manifest. Explain the sample-data and customer-validation limits.
 
 Use the live application and current evidence ahead of the older synthetic motion film. Do not claim superiority to generic LLMs without a controlled comparison, or use API success as evidence that judges or readers will prefer the result.

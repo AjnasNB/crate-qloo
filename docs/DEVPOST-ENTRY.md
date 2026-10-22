@@ -2,6 +2,8 @@
 
 Historical October 17 payload. The current live results are in [LIVE-QLOO.md](LIVE-QLOO.md), and the exact replacement fields saved and verified on October 22 are in [DEVPOST-LIVE.json](DEVPOST-LIVE.json). The existing Devpost submission remains Submitted with 5/5 steps complete.
 
+Application links below now point to the current [direct Cloudflare Worker](https://crate-qloo.ajnasnb.workers.dev), implementation `8df452b`. Only the destination links have been refreshed; the pending-access wording and measured results in this historical payload describe October 17, not the current deployment.
+
 Prepared October 17, 2026. Crate’s [public project](https://devpost.com/software/crate-6jkox0) has its story and three screenshots saved. Submission `1242313-crate` was confirmed by Devpost’s “Project submitted!” receipt and “SUBMITTED TO Qloo” status after the user explicitly authorized final terms acceptance and submission. Local receipt evidence is `evidence/devpost-crate-submitted.jpg` in the parent workspace. Keep the live-pending status in the public body until successful Qloo validation; submission is not proof of eligibility or live integration.
 
 ## Project name
@@ -39,7 +41,7 @@ All 54 automated checks pass, including 220 seeded independent brute-force compa
 
 Next are genuine Qloo mappings, a fast reviewed starter catalogue, useful non-adaptation cultural bridges and live external-tool planning. Bookseller adoption, time savings and sales uplift have not been measured.
 
-[Try the public prototype](https://crate-books-ajnas.foamythyme32.chatgpt.site)
+[Try the public prototype](https://crate-qloo.ajnasnb.workers.dev)
 [Read the public MIT-licensed source](https://github.com/AjnasNB/crate-qloo)
 
 Developed by Ajnas N B
@@ -52,7 +54,7 @@ Qloo live access remains pending. No language model is called by this version.
 
 ## Links
 
-- Working prototype: https://crate-books-ajnas.foamythyme32.chatgpt.site
+- Working prototype: https://crate-qloo.ajnasnb.workers.dev
 - Public source: https://github.com/AjnasNB/crate-qloo
 - License: MIT.
 - Motion video: https://github.com/AjnasNB/crate-qloo/releases/tag/v0.2.0-motion-prototype — verified public release, linked in the submitted story.

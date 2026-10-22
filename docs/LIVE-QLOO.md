@@ -2,7 +2,11 @@
 
 Developed by Ajnas N B
 
-**Live integration passed.** The issued hackathon credential is stored as a hosted server secret. It is absent from source, client assets, reports and test inputs. The deployed public application is Site version 8, source `1b470a1726936a90fe10e9ab5b7e3adfe9e27e04`. Later presentation and documentation commits do not change that runtime.
+**Live integration passed on the direct Cloudflare deployment.** The issued credential is stored as a Worker secret, absent from source, client assets, reports and test inputs. The current app is [Crate on Cloudflare](https://crate-qloo.ajnasnb.workers.dev), source `8df452b`. Its real API, public MCP HTTP and browser checks passed after migration. [Deployment evidence](CLOUDFLARE.md) records the active version and native request limits. The original observations below were on the earlier deployment (`1b470a1`); export fixes followed in `99fe9df`. These historical checks are not relabeled as new-host tests.
+
+## Direct Cloudflare acceptance
+
+All **69 tests**, TypeScript, production build and Wrangler dry-run passed. A fresh live smoke on the new origin returned 12/12 candidates for both programmes; changing A to Amélie changed both ranks and allocations. Direct MCP HTTP discovery and planning passed. A separate browser run retrieved live evidence at **07:37:24.327 UTC**, packed eight placements and verified stale-export protection and locked-B repair. The evidence JSON link matched the visible snapshot byte for byte. No console errors were observed. [Export and print verification](EXPORT-QA.md) distinguishes payload and paginated-renderer checks from native browser saving.
 
 ## Failure found and corrected
 
@@ -40,14 +44,14 @@ Create an ignored `outputs/` directory, then run from the repository:
 
 ```sh
 node --experimental-strip-types scripts/live-starter-input.mjs > outputs/live-input.json
-node --experimental-strip-types tests/live-smoke.mjs --base https://crate-books-ajnas.foamythyme32.chatgpt.site --input outputs/live-input.json
+node --experimental-strip-types tests/live-smoke.mjs --base https://crate-qloo.ajnasnb.workers.dev --input outputs/live-input.json --mcp-http
 ```
 
-The generator makes no API call and contains no key. The smoke consumes at most three Insights calls. Re-review changed identities before use. Run native MCP planning separately through an authorized installed client; the anonymous `/mcp` OAuth boundary is not a Qloo failure and must not be bypassed.
+The generator makes no API call and contains no key. The smoke consumes at most three Insights calls, or five with the optional MCP HTTP check shown above. Re-review changed identities before use. Native external-client interoperability is a separate check: the earlier installed-client proof used the prior origin; it does not establish that client has been reconfigured for the new endpoint.
 
 ## Limits and submission
 
-A browser manifest-download event timed out, so completed browser download is not verified. CSV content/constraints pass automated checks; print DOM was inspected, but physical printing was not tested. Real rate-limit, quota-exhaustion and outage incidents were not induced. The older narrated motion release illustrates the labeled synthetic prototype and does not prove the newer live integration.
+Completed native-browser download and print-preview/PDF saving remain unverified because automation capture failed. Actual public CSV/JSON link contents were inspected on both deployments, and A4/Letter fixtures were paginated with WeasyPrint; [the export record](EXPORT-QA.md) distinguishes these checks from browser saving and physical printing. Real distributed rate-limit, quota-exhaustion and outage incidents were not induced. The older narrated motion release illustrates the labeled synthetic prototype and does not prove the newer live integration.
 
 Sample events, quantities, prices and shelf ages remain fictional. No customer adoption, reader acceptance, time savings, sales uplift, organizer approval or winning probability is claimed. [Public live evidence illustration](assets/crate-live-qloo.png).
 

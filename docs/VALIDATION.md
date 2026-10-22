@@ -2,13 +2,15 @@
 
 Developed by Ajnas N B
 
-Current status, October 22: [live integration passed](LIVE-QLOO.md), including hosted search, reviewed starter mappings, two inventory-restricted profiles, programme-dependent allocation, stock repair and native MCP planning. The complete local suite passes 58/58 checks. Customer usefulness remains unmeasured. The dated October 17 sections below preserve earlier observations and limitations; they are not the current access status.
+Current status, October 22: [live integration passed](LIVE-QLOO.md), including hosted search, reviewed starter mappings, two inventory-restricted profiles, programme-dependent allocation, stock repair and native MCP planning. The direct Cloudflare Workers implementation `8df452b` passed 69/69 local checks, TypeScript, production build and deployment dry-run. Customer usefulness remains unmeasured. The dated October 17 sections and implementation notes below preserve earlier observations and limitations; they are not the current access status.
+
+Current application: [Crate](https://crate-qloo.ajnasnb.workers.dev). The destination is the direct Worker deployed on October 22; observations from earlier revisions below were collected before this migration.
 
 ## Earlier version 3 checks, October 17, 2026
 
 All 54 automated tests pass: 13 CSV checks, 13 planner checks (including 220 seeded independent brute-force comparisons), 14 Qloo adapter checks, and 14 MCP HTTP-contract checks. Full TypeScript checking and the updated production build pass. Browser checks verified initial packing, locked-crate preservation, stock-out repair, disabled exports for stale plans, explicit conflicting-pin errors, dialog focus and return, inline CSV errors, and the narrow mobile layout. Version 3 was published successfully and its hosted browser flow verified eight placements, the source-labeled action log, the named stock dialog and heading focus. Anonymous access to the configuration endpoint returns HTTP 200 without credentials.
 
-Public prototype: [Crate](https://crate-books-ajnas.foamythyme32.chatgpt.site). Public MIT-licensed source: [AjnasNB/crate-qloo](https://github.com/AjnasNB/crate-qloo). Deployed application revision: `e4d5d3412ed6d5149739708d9d2d711300b0a315`, Site version 3. The latest hardening adds invalid-reserve rejection, control-character SKU rejection, key-file exclusions, and accessible error/focus behavior. Subsequent documentation-only commits do not change that implementation. See [product QA](PRODUCT-QA.md) and [technical QA](TECHNICAL-QA.md) for the sixteen-check evidence ledgers and remaining limits.
+Public MIT-licensed source: [AjnasNB/crate-qloo](https://github.com/AjnasNB/crate-qloo). The historical deployment tested here used application revision `e4d5d3412ed6d5149739708d9d2d711300b0a315`, hosted revision 3. Its hardening added invalid-reserve rejection, control-character SKU rejection, key-file exclusions, and accessible error/focus behavior. These observations remain historical and do not independently verify the current direct deployment linked above. See [product QA](PRODUCT-QA.md) and [technical QA](TECHNICAL-QA.md) for the sixteen-check evidence ledgers and remaining limits.
 
 Browser policy prevented checking Chrome's download history. CSV content and stock-safe export behavior were verified by automated tests; a completed browser download was not independently confirmed. Live Qloo, external-agent interoperability with a real key, reader usefulness and customer results remain unverified.
 
@@ -16,7 +18,7 @@ The published native MCP search tool was invoked from an external assistant on O
 
 ## Later live-readiness review, October 17, 2026
 
-Two defects were corrected after the version 3 review: a documented Qloo `query.explainability.warning` now marks optional explanations unavailable while preserving returned ranks, and the manual smoke check rejects UUID case or anchor-order changes that leave the actual upstream signal unchanged. The full updated suite passes 56/56 checks (13 CSV, 13 planner, 16 Qloo/input checks, 14 MCP); TypeScript and targeted lint pass. The production build passed and Site version 4 successfully published revision `ded42c0cc1928a6a4bcf86d90165ccabe6b8dec8`, preserving public access and MCP availability. This server/input correction is separate from the earlier version 3 browser evidence.
+Two defects were corrected after the version 3 review: a documented Qloo `query.explainability.warning` now marks optional explanations unavailable while preserving returned ranks, and the manual smoke check rejects UUID case or anchor-order changes that leave the actual upstream signal unchanged. The full updated suite passes 56/56 checks (13 CSV, 13 planner, 16 Qloo/input checks, 14 MCP); TypeScript and targeted lint pass. The production build passed and hosted revision 4 successfully published application `ded42c0cc1928a6a4bcf86d90165ccabe6b8dec8`, preserving public access and MCP availability. This server/input correction is separate from the earlier version 3 browser evidence.
 
 No Qloo key was present in the authorized mailbox check or configured hosted runtime. The access request receipt remains confirmed. The authorized follow-up to the hackathon manager was sent on October 17 and Gmail's sent record verified. No new live Qloo success or Devpost live-status update is claimed.
 
