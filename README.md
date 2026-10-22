@@ -2,7 +2,7 @@
 
 **Pack books for the crowd. Developed by Ajnas N B.**
 
-[Try Crate on Cloudflare](https://crate-qloo.ajnasnb.workers.dev) · [Watch the live Qloo motion film](https://crate-qloo.ajnasnb.workers.dev/demo) · [Devpost entry](https://devpost.com/software/crate-6jkox0) · [Quality record](docs/QUALITY.md)
+[Try Crate](https://crate.ajnasnb.com) · [Watch the live Qloo motion film](https://crate.ajnasnb.com/demo) · [Free bookseller trial](https://crate.ajnasnb.com/trial) · [Devpost entry](https://devpost.com/software/crate-6jkox0) · [Quality record](docs/QUALITY.md)
 
 Crate is a planning desk for an independent bookstore sending two separately staffed cultural stalls out at the same time. It allocates a shared book inventory, protects shop reserves, and repairs packing lists when stock or editorial decisions change.
 
@@ -14,7 +14,13 @@ Simulation remains explicitly labeled and uses hand-authored or deterministic fi
 
 Report a workflow blocker through the [sanitized feedback form](https://github.com/AjnasNB/crate-qloo/issues/new?template=workflow-feedback.yml). Do not include private stock files, customer details or credentials.
 
-UTF-8 CSV file links, wrapped print layouts and warning-only stale printing are included. All **79 tests** pass. [Export/print verification](docs/EXPORT-QA.md) records actual saved CSV/JSON files, inspected A4/Letter PDFs and the remaining native-dialog boundary. [Novelty and competing approaches](docs/NOVELTY.md) explains the contribution and its unmeasured customer value.
+## Free exploratory bookseller trial
+
+The trial is voluntary and requires no payment or account. It compares the shop's usual packing method with live Crate using a bounded stock subset, then tests a simulated shortage. The workbook records first-use setup, packing/repair times, incomplete attempts, editorial acceptance and criticism. Reports are not sent automatically. See the [predefined protocol](docs/BOOKSELLER-TRIAL.md) and [recruitment preparation](docs/TRIAL-OUTREACH.md).
+
+No completed bookseller trials or measured customer benefits are published yet. Developer rehearsals and software checks do not count as customer validation. Any later result must retain its sample size, setup costs, failures, learning effects and publication consent.
+
+UTF-8 CSV file links, wrapped print layouts and warning-only stale printing are included. All **95 tests** pass, including 16 trial-report checks. [Export/print verification](docs/EXPORT-QA.md) records actual saved CSV/JSON files, inspected A4/Letter PDFs and the remaining native-dialog boundary. [Novelty and competing approaches](docs/NOVELTY.md) explains the contribution and its unmeasured customer value.
 
 ## Run locally
 

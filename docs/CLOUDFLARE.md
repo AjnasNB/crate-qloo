@@ -4,9 +4,17 @@ Developed by Ajnas N B
 
 Public app: **https://crate-qloo.ajnasnb.workers.dev**. Worker: `crate-qloo`. Initial application source: `8df452b`. Initial version: `ca3a7571-c767-4f6a-9458-1285a45a48b5`; the first version after securely configuring the existing Qloo server secret is `af52090d-269d-4604-a2e5-14af7417f042`, deployed at 07:36:41 UTC. No key is stored in source, client assets or this record.
 
-## Current motion-film release
+## Current custom-domain and trial release
 
-The active version is **57f55a99-10cb-4947-9514-31462a49c05a**, from application source **0c888d3**. [Watch the rendered film](https://crate-qloo.ajnasnb.workers.dev/demo). The film source is 70ae134 and the frozen rendered release is [v0.3.0-live-motion](https://github.com/AjnasNB/crate-qloo/releases/tag/v0.3.0-live-motion). Current source, video and verification are published without credentials.
+The canonical app is **https://crate.ajnasnb.com**, with the free workbook at **/trial** and the existing rendered film at **/demo**. The original Workers subdomain remains available for existing links. The active Worker version is **4e2cb935-bfd1-4f3d-a965-2d53b6997eb2**, from application source **ef67207**. A nonmutating custom-domain preview reported no DNS or origin conflicts; the new hostname was attached without replacing an existing record. Preview URLs remain disabled.
+
+All **95 tests**, TypeScript, focused ESLint, production build and deployment dry-run pass. Real Qloo calls on the custom origin returned 12/12 books per programme; changing the programme changed ranks and allocations. HTTP MCP planning, stock-safe protected-crate repair and export checks pass. The public trial route hydrates, keeps completion disabled for an empty report, and fits a 390-pixel Chrome viewport without horizontal overflow. Local Chrome practice checks verified setup timing before CSV input, frozen case inputs after planning starts, explicit save/reload/load and draft JSON provenance. None of these developer checks is customer validation.
+
+Three free-trial invitations were sent and reread in Gmail. No completed bookseller sessions or measured benefits are claimed. Devpost's saved story and both public/judge app URLs were reopened and matched the prepared custom-domain update; finalization remains Submitted, 5/5 complete. See [trial QA](TRIAL-QA.md).
+
+## Previous motion-film release
+
+The prior motion-film version was **57f55a99-10cb-4947-9514-31462a49c05a**, from application source **0c888d3**. [Watch the rendered film](https://crate.ajnasnb.com/demo). The film source is 70ae134 and the frozen rendered release is [v0.3.0-live-motion](https://github.com/AjnasNB/crate-qloo/releases/tag/v0.3.0-live-motion). Current source, video and verification are published without credentials.
 
 All **79 tests** pass, including ten new media regressions. TypeScript, targeted lint and the production build pass. The actual local Workers runtime and the public Worker return exact prefix, middle, suffix and open-ended bytes as 206 with correct Content-Length; unsatisfiable requests return 416, mismatched strong If-Range receives 200, and conditional retrieval receives 304. HEAD is bodyless; the native asset binding omits its optional length. The early asset-first delivery ignored Range. The fix routes only this MP4 through a bounded stream and FixedLengthStream, cancelling upstream after the requested bytes. Late seeks still read/discard the preceding internal asset stream; this is not storage-level seeking. [Measured record](RELEASE-OCT22.json).
 
