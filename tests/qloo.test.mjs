@@ -123,6 +123,23 @@ test('authentication, rate limiting and upstream failures never echo upstream me
   await expectError(getQlooEvidence(input(), config, { fetchImpl: async () => json({ error: config.apiKey }, { status: 500 }) }), 'QLOO_UNAVAILABLE', 502);
 });
 
+test('upstream diagnostics reveal only a bounded status or error class', async () => {
+  const httpEvents = [];
+  await expectError(searchQloo({ query: 'book', type: 'book' }, config, {
+    fetchImpl: async () => json({ error: config.apiKey }, { status: 503 }),
+    diagnostic: (event) => httpEvents.push(event),
+  }), 'QLOO_UNAVAILABLE', 502);
+  assert.deepEqual(httpEvents, [{ endpoint: '/search', kind: 'http', status: 503 }]);
+
+  const networkEvents = [];
+  await expectError(searchQloo({ query: 'book', type: 'book' }, config, {
+    fetchImpl: async () => { throw new Error(config.apiKey); },
+    diagnostic: (event) => networkEvents.push(event),
+  }), 'QLOO_UNAVAILABLE', 502);
+  assert.deepEqual(networkEvents, [{ endpoint: '/search', kind: 'network', errorName: 'Error' }]);
+  assert.ok(!JSON.stringify([...httpEvents, ...networkEvents]).includes(config.apiKey));
+});
+
 test('invalid JSON, oversized chunked upstream and unapproved host fail closed', async () => {
   await expectError(getQlooEvidence(input(), config, { fetchImpl: async () => new Response('not json') }), 'QLOO_INVALID_RESPONSE', 502);
   await expectError(getQlooEvidence(input(), config, { fetchImpl: async () => new Response('x'.repeat(QLOO_LIMITS.upstreamBytes + 1)) }), 'PAYLOAD_TOO_LARGE', 502);

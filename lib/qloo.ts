@@ -9,7 +9,12 @@ export type EvidenceInput = {
   books: { id: string; entityId: string }[];
   events: { id: string; anchors: { name: string; type: "artist" | "movie"; entityId: string }[] }[];
 };
-type Runtime = { fetchImpl?: typeof fetch; timeoutMs?: number; now?: () => Date };
+type Runtime = {
+  fetchImpl?: typeof fetch;
+  timeoutMs?: number;
+  now?: () => Date;
+  diagnostic?: (event: { endpoint: string; kind: "http" | "network"; status?: number; errorName?: string }) => void;
+};
 type JsonObject = Record<string, unknown>;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -205,6 +210,7 @@ async function upstream(config: QlooConfig, path: string, parameters: Record<str
     if (!response.ok) {
       await response.body?.cancel();
       if (response.status === 404 && allowNotFound) return { data: { results: [] }, responseHash: "", retrievedAt: (runtime.now?.() ?? new Date()).toISOString() };
+      diagnose(runtime, { endpoint: path, kind: "http", status: response.status });
       if (response.status === 401 || response.status === 403) throw new QlooError(502, "QLOO_AUTH", "Qloo rejected the server credential. Check the key and its approved API host.");
       if (response.status === 429) {
         const retry = response.headers.get("retry-after");
@@ -222,8 +228,16 @@ async function upstream(config: QlooConfig, path: string, parameters: Record<str
   } catch (error) {
     if (error instanceof QlooError) throw error;
     if (controller.signal.aborted) throw new QlooError(504, "QLOO_TIMEOUT", "Qloo did not respond before the deadline. Try again later.");
+    diagnose(runtime, { endpoint: path, kind: "network", errorName: error instanceof Error ? error.name.slice(0, 40) : typeof error });
     throw new QlooError(502, "QLOO_UNAVAILABLE", "The Qloo connection failed. No replacement data was used.");
   } finally { clearTimeout(timer); }
+}
+
+/** Emit only bounded endpoint/status metadata; never log credentials, URLs, or upstream bodies. */
+function diagnose(runtime: Runtime, event: { endpoint: string; kind: "http" | "network"; status?: number; errorName?: string }) {
+  try {
+    (runtime.diagnostic ?? ((entry) => console.error("Qloo upstream diagnostic", entry)))(event);
+  } catch { /* Diagnostics must not change the live request result. */ }
 }
 
 export async function searchQloo(input: unknown, config: QlooConfig, runtime: Runtime = {}) {
