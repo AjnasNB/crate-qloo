@@ -1,5 +1,5 @@
 /**
- * Manual live integration check, excluded from the four-file unit-test command.
+ * Manual live integration check; unit tests import its validation helpers only.
  * No API key is accepted or printed: the deployed server owns its credential.
  * Run only after reviewing real Qloo identities; this script never guesses IDs.
  */
@@ -12,7 +12,7 @@ import { packingCsv } from '../lib/csv.ts';
 
 const help = `Manual Crate live smoke check
 
-node --experimental-strip-types tests/live-smoke.mjs --base https://YOUR-CRATE-SITE --input /absolute/path/to/reviewed-input.json [--mcp-http]
+node --experimental-strip-types tests/live-smoke.mjs --base https://crate-qloo.ajnasnb.workers.dev --input /absolute/path/to/reviewed-input.json [--mcp-http]
 
 Input JSON: {review:{identitiesConfirmed:true},books:[Book],events:[Stall,Stall],changedEvent:{id,anchors}}
 Use genuine Qloo search results reviewed against title/author and programme identity.
@@ -20,9 +20,11 @@ changedEvent must replace at least one confirmed anchor in one existing stall.
 Do not paste keys in this file, the command, or the input. Use an ignored outputs/ input file.
 Default: at most three Qloo Insights calls (two API profiles and one changed profile).
 Optional --mcp-http adds at most two planning calls for an endpoint accessible to this client.
-Sites protects canonical /mcp with OAuth. Its anonymous 401 is an authentication
-boundary, not a Qloo failure. Use the installed native Crate tool for external-agent
-proof; this script never extracts, accepts or stores Sites tokens or uses a bypass.
+The direct Worker exposes public /mcp without a hosting sign-in adapter.
+Live API POSTs and MCP POSTs share an approximate 30/IP/60s native limit;
+validated native discovery/list/ping are exempt, but legacy handshakes count.
+HTTP 429 includes Retry-After; a limiter failure returns 503, never sample data.
+The optional HTTP check is separate from actual external-agent interoperability.
 Non-adaptation and reader usefulness require separate review; the script cannot certify them.
 No synthetic data is supplied. No stock is changed. No retry loop is used.`;
 

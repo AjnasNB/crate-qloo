@@ -2,17 +2,19 @@
 
 **Pack books for the crowd. Developed by Ajnas N B.**
 
-[Try the public prototype](https://crate-books-ajnas.foamythyme32.chatgpt.site) · [Narrated motion demo and editable source](https://github.com/AjnasNB/crate-qloo/releases/tag/v0.2.0-motion-prototype) · [Devpost entry](https://devpost.com/software/crate-6jkox0) · [Quality record](docs/QUALITY.md)
+[Try Crate on Cloudflare](https://crate-qloo.ajnasnb.workers.dev) · [Narrated motion demo and editable source](https://github.com/AjnasNB/crate-qloo/releases/tag/v0.2.0-motion-prototype) · [Devpost entry](https://devpost.com/software/crate-6jkox0) · [Quality record](docs/QUALITY.md)
 
 Crate is a planning desk for an independent bookstore sending two separately staffed cultural stalls out at the same time. It allocates a shared book inventory, protects shop reserves, and repairs packing lists when stock or editorial decisions change.
 
 ## Current status
 
-**Live Qloo integration passed on October 22, 2026.** The public app offers a reviewed twelve-title starter catalogue: choose **Use live Qloo**, then **Pack the stalls**. Hosted search, inventory-restricted rankings for both programmes, changed-programme retrieval, stock-safe repair and an installed native MCP planning call passed. See the [measured live record and limits](docs/LIVE-QLOO.md).
+**Live Qloo integration passed on the direct Cloudflare deployment on October 22, 2026.** Choose **Use live Qloo**, then **Pack the stalls**. The reviewed twelve-title starter, inventory-restricted rankings, changed-programme retrieval, stock-safe repair and public MCP HTTP planning passed. See the [measured live record and limits](docs/LIVE-QLOO.md).
 
 Simulation remains explicitly labeled and uses hand-authored or deterministic fixtures. Sample stock and events are fictional. This version does not call a language model. The [existing Devpost entry](https://devpost.com/software/crate-6jkox0) was updated and verified on October 22 with the live results, evidence image and judge instructions; it remains Submitted with 5/5 steps complete. Software verification does not establish reader usefulness, customer results or judging acceptance.
 
 Report a workflow blocker through the [sanitized feedback form](https://github.com/AjnasNB/crate-qloo/issues/new?template=workflow-feedback.yml). Do not include private stock files, customer details or credentials.
+
+UTF-8 CSV file links, wrapped print layouts and warning-only stale printing are included. All **69 tests** pass. [Export/print verification](docs/EXPORT-QA.md) records public payload checks, A4/Letter renders and the native-browser save check that still needs manual confirmation. [Novelty and competing approaches](docs/NOVELTY.md) explains the contribution and its unmeasured customer value.
 
 ## Run locally
 
@@ -48,7 +50,19 @@ The fixed starter's book and programme matches were reviewed from live metadata 
 
 The adapter uses the documented `/search` and `GET /v2/insights` endpoints. Book requests restrict `filter.results.entities` to the confirmed inventory and pass the confirmed film/artist interests through `signal.interests.entities`. Returned order supplies rank. The trace records request parameters, response hashes, missing candidates, and whether optional explainability was supplied. Stock-only repair reuses evidence; changing a programme requires new retrieval for that context.
 
-Live errors remain errors. The adapter never silently substitutes synthetic data. Before enabling public live traffic, confirm the upstream key's hard quota or configure hosting abuse controls. No in-memory counter is represented as reliable quota enforcement.
+Live errors remain errors. The adapter never silently substitutes synthetic data. The Worker uses Cloudflare's native rate limiter for credential-consuming requests: 30 per client IP per 60 seconds, approximate and local to a Cloudflare location. This abuse control is not a global upstream quota or authentication. See [deployment and operational limits](docs/CLOUDFLARE.md).
+
+## Deploy to your Cloudflare account
+
+```sh
+npm ci
+npm run build
+npx wrangler login
+npm run deploy
+npx wrangler secret put QLOO_API_KEY --config dist/server/wrangler.json
+```
+
+Set your own `account_id` and Worker name in `wrangler.jsonc` before building. Enter the key only at Wrangler's secret prompt. The default hackathon API host requires no additional secret. The app runs directly on Workers with static assets; no external sign-in or connector gateway is required. See [the verified deployment record](docs/CLOUDFLARE.md).
 
 ## Agent tool endpoint
 
@@ -80,7 +94,7 @@ npm run build
 
 Tests include independent brute-force checks against the allocation solver, hard-constraint and infeasibility cases, CSV import/export, and mocked Qloo authentication, rate limits, timeouts, bounded responses, candidate restriction and provenance. Mock tests do not replace live API validation.
 
-The app uses React with the Sites Vinext starter and Cloudflare-compatible server routes. The maintained `sites()` Vite integration and source manifest are retained for publishing. The build emits a deployable Worker and client assets.
+The app uses React, TypeScript and Vinext with the official Cloudflare Vite plugin. The build emits a Worker and client assets for deployment directly to the owner's Cloudflare account.
 
 ## Project evidence
 
@@ -95,4 +109,4 @@ Qloo API responses are not included in this repository. Bibliographic names are 
 
 ## License
 
-MIT, copyright 2026 Ajnas N B. See [LICENSE](LICENSE). The supplied Sites Vite integration retains its included third-party license. Dependencies retain their respective licenses.
+MIT, copyright 2026 Ajnas N B. See [LICENSE](LICENSE). Dependencies and retained third-party sources keep their respective licenses.

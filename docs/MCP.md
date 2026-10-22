@@ -1,8 +1,8 @@
 # Crate MCP endpoint
 
-Developed by Ajnas N B. Experimental implementation; no MCP certification or live-Qloo validation is claimed.
+Developed by Ajnas N B. Live Qloo integration is measured in [LIVE-QLOO.md](LIVE-QLOO.md); no MCP certification is claimed.
 
-Crate exposes the canonical `/mcp` endpoint for the Sites-created private App/plugin, with `/api/mcp` retained as an alias. Both are stateless Streamable HTTP endpoints. An external MCP-capable language-model agent can discover and call the tools below. Crate itself does not run an LLM or claim that its deterministic UI is an AI agent.
+Crate exposes the canonical `/mcp` endpoint directly from its Cloudflare Worker, with `/api/mcp` retained as an alias. Both are stateless Streamable HTTP endpoints. An external MCP-capable agent can discover and call the tools below. Crate itself does not run an LLM or claim that its deterministic UI is an AI agent.
 
 ## Tools and workflow
 
@@ -35,9 +35,9 @@ Example planning arguments after resolving and confirming identities:
 
 The placeholders are intentionally not UUIDs and fail validation. Use real search results; the server requires a Qloo key. Missing credentials or upstream failures return explicit tool errors and never synthetic evidence. Returned utility is application-defined ordinal rank points, not purchase likelihood or a demand forecast. A selected lineup describes an audience hypothesis, not every attendee or an artist affiliation.
 
-## Native Sites connection and protocol
+## Connection and protocol
 
-With `"mcp"` in the Site hosting capabilities, publishing through Sites creates a private App/plugin for the owner and republishes refresh its tool list. Sites authenticates forwarded MCP requests and checks that callers can view the Site. Reuse that private connection in ChatGPT or Codex; no second App, manual MCP configuration or separate MCP login is needed. If installation is not automatic, locate the Site-created plugin under Plugins → Personal → Created by you and choose Install or Connect. Installation is optional for using the web interface; actual tool availability must be checked in the client.
+Connect a compatible remote MCP client to [https://crate-qloo.ajnasnb.workers.dev/mcp](https://crate-qloo.ajnasnb.workers.dev/mcp). The hackathon demo is a public read-only planning service with no stock database or external mutation. It uses the Worker's server-side Qloo secret, bounded arguments and explicit error responses. No hosting-specific plugin or sign-in adapter is required. Client interoperability should be verified separately from a successful HTTP protocol check.
 
 Native clients use protocol `2026-07-28`, beginning with `server/discover` or calling tools directly. Discovery returns `supportedVersions: ["2026-07-28"]` and `capabilities: {"tools": {}}`. It does not require an initialize handshake. Each request includes the protocol and client capabilities in `params._meta`, together with matching `MCP-Protocol-Version` and `Mcp-Method` headers. Tool calls also include a matching `Mcp-Name` header. For example, POST this body to `/mcp` with `MCP-Protocol-Version: 2026-07-28` and `Mcp-Method: server/discover`, plus the JSON content type and JSON/SSE Accept header:
 
@@ -65,23 +65,27 @@ Native and June/November 2025 clients receive both `structuredContent` and a ser
 
 ## Deployment and limits
 
-The existing server `QLOO_API_KEY` and allowlisted `QLOO_API_BASE` configuration are reused. Secrets are never sent to clients. The endpoint adds no second secret, user account or external credential. Initialization and discovery work before the Qloo key arrives; live tools remain unavailable until it is configured.
+The direct deployment uses the server-side `QLOO_API_KEY` and allowlisted `QLOO_API_BASE` configuration. Secrets are never sent to clients. The endpoint adds no second secret, user account or external credential. Initialization and discovery do not depend on a Qloo key; a missing or invalid credential remains an explicit live-tool error.
 
-Only same-origin browser origins are accepted; native MCP clients normally omit Origin. Bodies are capped at 32 KiB, inventories at 18 titles, stalls at two, anchors at four per stall and slots at six per stall. Existing Qloo response-size caps and deadlines apply. Sites supplies access checks for its private plugin connection; the application adds no protocol-level sessions or durable global quota counter. Deployment-level abuse/rate controls and upstream hard quotas must be configured before unrestricted public live use; a module-local counter would not supply that guarantee.
+Only same-origin browser origins are accepted; native MCP clients normally omit Origin. Bodies are capped at 32 KiB, inventories at 18 titles, stalls at two, anchors at four per stall and slots at six per stall. Existing Qloo response-size caps and deadlines apply.
+
+The Worker's native `QLOO_RATE_LIMITER` applies a shared **30 requests per IP per 60 seconds** to POST `/api/search`, POST `/api/evidence` and MCP POSTs at both endpoint paths. Native `2026-07-28` requests with matching discovery, tool-list or ping headers are exempt; the MCP route validates that those headers match the body before any tool execution. Legacy MCP POSTs, including initialization, notifications and discovery, count. Static assets and configuration GETs are exempt. Requests without `CF-Connecting-IP` share one bounded bucket.
+
+This is approximate protection per Cloudflare location, not a global quota, authentication system or count of upstream Qloo calls. A planning request can make more than one upstream call. Denials return HTTP 429 with `Retry-After: 60`; a missing or failing limiter returns HTTP 503 with no synthetic fallback. Upstream Qloo limits still apply. No protocol-level sessions or module-local mutable quota counters are used. See the [native rate-limit binding's documented limits](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/).
 
 The endpoint follows the published [Streamable HTTP transport](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports), [lifecycle](https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle), and [tools](https://modelcontextprotocol.io/specification/2025-11-25/server/tools) contracts for the implemented subset. It is not a claim of support for every MCP feature.
 
 Run `node --test tests/mcp.test.mjs`. Tests use injected mock upstream responses; they do not establish live Qloo access or external-agent interoperability.
 
-## Live verification after access arrives
+## Live verification
 
-The separate `tests/live-smoke.mjs` is a manual integration check. Its input-normalization regression is included among the 58 local tests, but live network calls are separate. On October 22 the hosted smoke and installed native `crate_plan_stalls` call passed with reviewed identities; see [the live verification record](LIVE-QLOO.md). `scripts/live-starter-input.mjs` generates the fixed reviewed starter input without a credential or network call. Re-review edited identities. The configured server owns its key; the smoke never guesses IDs or accepts a client API key.
+The separate `tests/live-smoke.mjs` is a manual integration check. Its input-normalization regression is included among the local tests, but live network calls are separate. On October 22 the hosted smoke and an external `crate_plan_stalls` call passed with reviewed identities; see [the live verification record](LIVE-QLOO.md). `scripts/live-starter-input.mjs` generates the fixed reviewed starter input without a credential or network call. Re-review edited identities. The configured server owns its key; the smoke never guesses IDs or accepts a client API key.
 
 ```sh
 node --experimental-strip-types tests/live-smoke.mjs --help
-node --experimental-strip-types tests/live-smoke.mjs --base https://crate-books-ajnas.foamythyme32.chatgpt.site --input /absolute/path/to/reviewed-input.json
+node --experimental-strip-types tests/live-smoke.mjs --base https://crate-qloo.ajnasnb.workers.dev --input /absolute/path/to/reviewed-input.json
 ```
 
-The default path makes at most three Insights calls to verify inventory evidence, changed-programme results, exact allocation, stock-safe repair and exports. It reports external MCP verification as not run. Use the installed Crate native tool with the same reviewed inputs for actual external-assistant planning proof.
+The default path makes at most three Insights calls to verify inventory evidence, changed-programme results, exact allocation, stock-safe repair and exports. It reports external MCP verification as not run. To establish current external-assistant interoperability, configure a compatible client for the new endpoint and make a live tool call with reviewed inputs. The earlier installed-client check used the previous origin.
 
-Optional `--mcp-http` adds a canonical MCP check only when that endpoint is accessible to the caller. Sites normally requires OAuth at `/mcp`; an anonymous HTTP 401 is reported as `AUTH_REQUIRED`, separately from Qloo failures. The script neither extracts authentication tokens nor uses an alternate route to evade that boundary. Non-adaptation relevance and reader usefulness remain explicit manual evaluations.
+Optional `--mcp-http` adds a canonical MCP HTTP check against the public direct endpoint. A successful HTTP tool exchange is distinct from connecting and using an external assistant. The script does not accept a Qloo key; it uses the Worker's configured credential. Non-adaptation relevance and reader usefulness remain explicit manual evaluations.

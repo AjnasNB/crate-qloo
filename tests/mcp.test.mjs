@@ -181,7 +181,7 @@ function modernRequest(method, params = {}, headers = {}) {
   const message = envelope(method, { ...params, _meta: {
     "io.modelcontextprotocol/protocolVersion": MCP_MODERN_PROTOCOL,
     "io.modelcontextprotocol/clientCapabilities": {},
-    "io.modelcontextprotocol/clientInfo": { name: "Sites test client", version: "1" },
+    "io.modelcontextprotocol/clientInfo": { name: "Crate MCP test client", version: "1" },
   } });
   return new Request("https://crate.example/mcp", { method: "POST", headers: {
     "Content-Type": "application/json", Accept: "application/json, text/event-stream",
@@ -190,7 +190,7 @@ function modernRequest(method, params = {}, headers = {}) {
   }, body: JSON.stringify(message) });
 }
 
-test("Sites canonical /mcp supports native discovery and tools without initialization", async () => {
+test("canonical /mcp supports native discovery and tools without initialization", async () => {
   const discover = await (await handleMcpRequest(modernRequest("server/discover"), noKey)).json();
   assert.deepEqual(discover.result.supportedVersions, ["2026-07-28"]);
   assert.deepEqual(discover.result.capabilities, { tools: {} });
