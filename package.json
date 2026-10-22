@@ -6,7 +6,8 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "test": "node --test tests/planner.test.mjs tests/csv.test.mjs tests/qloo.test.mjs tests/mcp.test.mjs",
+    "test": "node --test tests/planner.test.mjs tests/csv.test.mjs tests/qloo.test.mjs tests/mcp.test.mjs tests/download.test.mjs",
+    "test:download": "node --test tests/download.test.mjs",
     "typecheck": "tsc --noEmit",
     "install:ci": "node scripts/install-ci.mjs",
     "dev": "node scripts/run-framework.mjs dev",
