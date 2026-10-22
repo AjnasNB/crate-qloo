@@ -1,0 +1,123 @@
+{
+  "version": "0.8.185",
+  "ok": true,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "console_warning",
+        "severity": "warning",
+        "message": "THREE.WebGLProgram: Program Info Log: (210,81-129): warning X4122: sum of 0.996094 and -2.98545e-017 cannot be represented accurately in double precision\n(209,37-61): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(210,82-106): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(209,37-61): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision\n(210,82-106): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision\n\n\n\u0000"
+      }
+    ]
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 6,
+    "samples": [
+      1.843,
+      5.528,
+      9.213,
+      12.898,
+      16.583,
+      20.269,
+      23.954,
+      27.639,
+      31.324
+    ],
+    "findings": [
+      {
+        "code": "canvas_content_at_edge",
+        "severity": "warning",
+        "message": "Canvas content touches the frame edge (left, right)."
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "message": "Text is hidden beneath an opaque element."
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "message": "Text is hidden beneath an opaque element."
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "message": "Element extends outside a clipping layout container."
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels)."
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "message": "Element extends outside a clipping layout container."
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels)."
+      }
+    ]
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "samples": 0,
+    "findings": []
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "checked": 6,
+    "passed": 6,
+    "samples": [
+      1.843,
+      9.213,
+      16.583,
+      23.954,
+      31.324
+    ],
+    "findings": []
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 2,
+    "infoCount": 0,
+    "samples": 266,
+    "findings": [
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 4.36 s (12.84–17.21 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md."
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 3.24 s (17.83–21.07 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md."
+      }
+    ]
+  },
+  "limits": "DOM motion/contrast findings do not measure the WebGL canvas or captured screenshot text; decoded images were reviewed separately."
+}

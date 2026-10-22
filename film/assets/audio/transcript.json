@@ -1,0 +1,458 @@
+[
+  {
+    "id": "w0",
+    "text": "Two",
+    "start": 0.16,
+    "end": 0.4
+  },
+  {
+    "id": "w1",
+    "text": "pop-ups",
+    "start": 0.4,
+    "end": 1.2
+  },
+  {
+    "id": "w2",
+    "text": "one",
+    "start": 1.2,
+    "end": 1.28
+  },
+  {
+    "id": "w3",
+    "text": "stockroom.",
+    "start": 1.44,
+    "end": 2.4
+  },
+  {
+    "id": "w4",
+    "text": "The",
+    "start": 2.4,
+    "end": 2.64
+  },
+  {
+    "id": "w5",
+    "text": "dispossessed",
+    "start": 2.64,
+    "end": 3.52
+  },
+  {
+    "id": "w6",
+    "text": "has",
+    "start": 3.52,
+    "end": 3.68
+  },
+  {
+    "id": "w7",
+    "text": "one",
+    "start": 3.68,
+    "end": 3.76
+  },
+  {
+    "id": "w8",
+    "text": "copy,",
+    "start": 3.92,
+    "end": 4.48
+  },
+  {
+    "id": "w9",
+    "text": "which",
+    "start": 4.48,
+    "end": 4.8
+  },
+  {
+    "id": "w10",
+    "text": "crate",
+    "start": 4.8,
+    "end": 5.2
+  },
+  {
+    "id": "w11",
+    "text": "gets",
+    "start": 5.36,
+    "end": 5.6
+  },
+  {
+    "id": "w12",
+    "text": "it.",
+    "start": 5.6,
+    "end": 6.08
+  },
+  {
+    "id": "w13",
+    "text": "Crate",
+    "start": 6.08,
+    "end": 6.64
+  },
+  {
+    "id": "w14",
+    "text": "uses",
+    "start": 6.64,
+    "end": 6.88
+  },
+  {
+    "id": "w15",
+    "text": "live",
+    "start": 6.88,
+    "end": 7.28
+  },
+  {
+    "id": "w16",
+    "text": "Culu",
+    "start": 7.28,
+    "end": 7.92
+  },
+  {
+    "id": "w17",
+    "text": "evidence",
+    "start": 8.08,
+    "end": 8.56
+  },
+  {
+    "id": "w18",
+    "text": "to",
+    "start": 8.64,
+    "end": 8.88
+  },
+  {
+    "id": "w19",
+    "text": "connect",
+    "start": 8.88,
+    "end": 9.36
+  },
+  {
+    "id": "w20",
+    "text": "each",
+    "start": 9.36,
+    "end": 9.68
+  },
+  {
+    "id": "w21",
+    "text": "program",
+    "start": 9.68,
+    "end": 9.92
+  },
+  {
+    "id": "w22",
+    "text": "with",
+    "start": 10.08,
+    "end": 10.32
+  },
+  {
+    "id": "w23",
+    "text": "books",
+    "start": 10.32,
+    "end": 10.8
+  },
+  {
+    "id": "w24",
+    "text": "already",
+    "start": 10.8,
+    "end": 11.2
+  },
+  {
+    "id": "w25",
+    "text": "in",
+    "start": 11.2,
+    "end": 11.44
+  },
+  {
+    "id": "w26",
+    "text": "stock.",
+    "start": 11.44,
+    "end": 12.56
+  },
+  {
+    "id": "w27",
+    "text": "Then",
+    "start": 12.56,
+    "end": 12.8
+  },
+  {
+    "id": "w28",
+    "text": "it",
+    "start": 12.8,
+    "end": 13.04
+  },
+  {
+    "id": "w29",
+    "text": "packs",
+    "start": 13.04,
+    "end": 13.52
+  },
+  {
+    "id": "w30",
+    "text": "both",
+    "start": 13.52,
+    "end": 13.76
+  },
+  {
+    "id": "w31",
+    "text": "stalls,",
+    "start": 13.76,
+    "end": 14.4
+  },
+  {
+    "id": "w32",
+    "text": "without",
+    "start": 14.4,
+    "end": 14.8
+  },
+  {
+    "id": "w33",
+    "text": "promising",
+    "start": 14.8,
+    "end": 15.36
+  },
+  {
+    "id": "w34",
+    "text": "the",
+    "start": 15.36,
+    "end": 15.44
+  },
+  {
+    "id": "w35",
+    "text": "same",
+    "start": 15.44,
+    "end": 15.76
+  },
+  {
+    "id": "w36",
+    "text": "copy",
+    "start": 15.76,
+    "end": 16.24
+  },
+  {
+    "id": "w37",
+    "text": "twice.",
+    "start": 16.24,
+    "end": 16.96
+  },
+  {
+    "id": "w38",
+    "text": "Now",
+    "start": 16.96,
+    "end": 17.36
+  },
+  {
+    "id": "w39",
+    "text": "that",
+    "start": 17.36,
+    "end": 17.6
+  },
+  {
+    "id": "w40",
+    "text": "copy",
+    "start": 17.6,
+    "end": 18
+  },
+  {
+    "id": "w41",
+    "text": "sells",
+    "start": 18,
+    "end": 18.4
+  },
+  {
+    "id": "w42",
+    "text": "out,",
+    "start": 18.4,
+    "end": 18.8
+  },
+  {
+    "id": "w43",
+    "text": "Soul",
+    "start": 18.8,
+    "end": 19.2
+  },
+  {
+    "id": "w44",
+    "text": "and",
+    "start": 19.28,
+    "end": 19.44
+  },
+  {
+    "id": "w45",
+    "text": "City",
+    "start": 19.44,
+    "end": 19.84
+  },
+  {
+    "id": "w46",
+    "text": "is",
+    "start": 19.84,
+    "end": 20
+  },
+  {
+    "id": "w47",
+    "text": "already",
+    "start": 20,
+    "end": 20.32
+  },
+  {
+    "id": "w48",
+    "text": "packed.",
+    "start": 20.32,
+    "end": 21.12
+  },
+  {
+    "id": "w49",
+    "text": "Keep",
+    "start": 21.12,
+    "end": 21.44
+  },
+  {
+    "id": "w50",
+    "text": "it",
+    "start": 21.44,
+    "end": 21.68
+  },
+  {
+    "id": "w51",
+    "text": "locked,",
+    "start": 21.68,
+    "end": 22.24
+  },
+  {
+    "id": "w52",
+    "text": "repair",
+    "start": 22.24,
+    "end": 22.56
+  },
+  {
+    "id": "w53",
+    "text": "the",
+    "start": 22.72,
+    "end": 22.8
+  },
+  {
+    "id": "w54",
+    "text": "other",
+    "start": 22.8,
+    "end": 23.04
+  },
+  {
+    "id": "w55",
+    "text": "crate.",
+    "start": 23.04,
+    "end": 23.84
+  },
+  {
+    "id": "w56",
+    "text": "Kindred",
+    "start": 23.84,
+    "end": 24.56
+  },
+  {
+    "id": "w57",
+    "text": "takes",
+    "start": 24.56,
+    "end": 24.88
+  },
+  {
+    "id": "w58",
+    "text": "the",
+    "start": 24.88,
+    "end": 24.96
+  },
+  {
+    "id": "w59",
+    "text": "open",
+    "start": 24.96,
+    "end": 25.36
+  },
+  {
+    "id": "w60",
+    "text": "slot,",
+    "start": 25.36,
+    "end": 25.84
+  },
+  {
+    "id": "w61",
+    "text": "the",
+    "start": 26,
+    "end": 26.16
+  },
+  {
+    "id": "w62",
+    "text": "other",
+    "start": 26.16,
+    "end": 26.4
+  },
+  {
+    "id": "w63",
+    "text": "seven",
+    "start": 26.4,
+    "end": 26.8
+  },
+  {
+    "id": "w64",
+    "text": "placements",
+    "start": 26.8,
+    "end": 27.44
+  },
+  {
+    "id": "w65",
+    "text": "stay.",
+    "start": 27.44,
+    "end": 28.16
+  },
+  {
+    "id": "w66",
+    "text": "Good",
+    "start": 28.16,
+    "end": 28.48
+  },
+  {
+    "id": "w67",
+    "text": "books,",
+    "start": 28.48,
+    "end": 29.04
+  },
+  {
+    "id": "w68",
+    "text": "the",
+    "start": 29.04,
+    "end": 29.2
+  },
+  {
+    "id": "w69",
+    "text": "right",
+    "start": 29.2,
+    "end": 29.36
+  },
+  {
+    "id": "w70",
+    "text": "crowd.",
+    "start": 29.44,
+    "end": 30.24
+  },
+  {
+    "id": "w71",
+    "text": "Crate,",
+    "start": 30.24,
+    "end": 30.88
+  },
+  {
+    "id": "w72",
+    "text": "developed",
+    "start": 30.88,
+    "end": 31.28
+  },
+  {
+    "id": "w73",
+    "text": "by",
+    "start": 31.28,
+    "end": 31.44
+  },
+  {
+    "id": "w74",
+    "text": "Ajna's",
+    "start": 31.44,
+    "end": 32.24
+  },
+  {
+    "id": "w75",
+    "text": "NB.",
+    "start": 32.24,
+    "end": 33.36
+  }
+]

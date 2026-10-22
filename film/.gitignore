@@ -1,0 +1,15 @@
+/renders/
+/.hyperframes/
+/.media/
+/.thumbnails/
+/.waveform-cache/
+/node_modules/
+/assets/local-fonts/
+/assets/evidence-snapshot.json
+/assets/audio/contact.mp3
+/assets/audio/narration-raw.wav
+/assets/audio/mix-unmastered.wav
+AGENTS.md
+CLAUDE.md
+*.log
+__pycache__/

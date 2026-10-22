@@ -1,0 +1,11 @@
+[
+  {"id":"depart","text":"Two pop-ups. One stockroom."},
+  {"id":"scarce","text":"The Dispossessed has one copy. Which crate gets it?"},
+  {"id":"evidence","text":"Crate uses live Qloo evidence to connect each programme with books already in stock."},
+  {"id":"pack","text":"Then it packs both stalls without promising the same copy twice."},
+  {"id":"stockout","text":"Now that copy sells out. Soul and City is already packed."},
+  {"id":"lock","text":"Keep it locked. Repair the other crate."},
+  {"id":"repair","text":"Kindred takes the open slot. The other seven placements stay."},
+  {"id":"promise","text":"Good books. The right crowd."},
+  {"id":"credit","text":"Crate. Developed by Ajnas N B."}
+]

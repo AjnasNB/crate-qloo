@@ -1,0 +1,39 @@
+{
+  "file": "renders/crate-live-demo.mp4",
+  "bytes": 17455515,
+  "sha256": "db971723683eb6ae3f8bb0865f025fe9926566e453c1f7a5fc990b7746763db8",
+  "duration": 33.166667,
+  "video": {
+    "codec": "h264",
+    "width": 1920,
+    "height": 1080,
+    "pixelFormat": "yuv420p",
+    "fps": "30/1",
+    "frames": 995
+  },
+  "audio": {
+    "codec": "aac",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 33.166
+  },
+  "fullDecode": "pass",
+  "captions": {
+    "cues": 9,
+    "measuredSegmentBounds": "pass",
+    "nonoverlap": "pass",
+    "withinFilm": "pass",
+    "alignment": "Measured clip boundaries; not independently forced-aligned word timing"
+  },
+  "allocation": {
+    "mode": "qloo",
+    "initialPlacements": 8,
+    "retainedPlacements": 7,
+    "changes": 2,
+    "lockedB": "unchanged"
+  },
+  "source": {
+    "minimalDerivedRanks": "pass",
+    "rawTraceExcluded": "pass"
+  }
+}

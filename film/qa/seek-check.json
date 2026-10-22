@@ -1,0 +1,14 @@
+{
+  "duration": 33.166666666666664,
+  "placements": 8,
+  "stockout": "b3",
+  "replacement": "b1",
+  "mode": "qloo",
+  "seek": {
+    "ok": true,
+    "samples": 18,
+    "elements": 32,
+    "canvases": 1,
+    "mismatches": []
+  }
+}

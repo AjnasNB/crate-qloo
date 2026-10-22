@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+const path=process.argv[2]??'renders/crate-live-demo.mp4';
+const info=JSON.parse(execFileSync('ffprobe',['-v','error','-show_streams','-show_format','-of','json',path],{encoding:'utf8'}));
+const video=info.streams.find(s=>s.codec_type==='video'),audio=info.streams.find(s=>s.codec_type==='audio');
+const timing=JSON.parse(fs.readFileSync('assets/audio/timing.json','utf8'));
+assert.equal(video.codec_name,'h264');assert.equal(video.width,1920);assert.equal(video.height,1080);
+assert.equal(video.pix_fmt,'yuv420p');assert.equal(video.avg_frame_rate,'30/1');
+assert.equal(Number(video.nb_frames),995);assert.ok(Math.abs(Number(info.format.duration)-timing.duration)<.06);
+assert.equal(audio.codec_name,'aac');assert.ok(Number(audio.sample_rate)>=24000);
+assert.ok(Math.abs(Number(audio.duration)-Number(video.duration))<.1);
+assert.ok(fs.statSync(path).size<24*1024*1024,'Cloudflare asset must remain below 24 MiB');
+execFileSync('ffmpeg',['-v','error','-i',path,'-map','0:v:0','-map','0:a:0','-f','null','-'],{stdio:['ignore','ignore','pipe']});
+const vtt=fs.readFileSync('assets/crate-live-demo.vtt','utf8');assert.ok(vtt.startsWith('WEBVTT\n\n'));
+const ms=text=>{const[h,m,s]=text.split(':').map(Number);return h*3600+m*60+s;};
+const cues=[...vtt.matchAll(/(\d\d:\d\d:\d\d\.\d\d\d) --> (\d\d:\d\d:\d\d\.\d\d\d)\n([^\n]+)/g)].map(m=>({start:ms(m[1]),end:ms(m[2]),text:m[3]}));
+assert.equal(cues.length,timing.lines.length);
+for(let i=0;i<cues.length;i++){
+ const cue=cues[i],line=timing.lines[i];
+ assert.ok(cue.start>=0&&cue.end>cue.start&&cue.end<=timing.duration);
+ assert.ok(!i||cue.start>=cues[i-1].end);assert.equal(cue.text,line.text);
+ assert.ok(Math.abs(cue.start-line.start)<=.0006&&Math.abs(cue.end-line.end)<=.0006);
+}
+const source=JSON.parse(fs.readFileSync('assets/data.json','utf8'));
+assert.equal(source.snapshot.mode,'qloo');assert.equal(source.original.feasible,true);assert.equal(source.repaired.feasible,true);
+assert.deepEqual(source.repaired.assignments.b,source.original.assignments.b);assert.equal(source.repaired.changeCount,2);
+assert.ok(!JSON.stringify(source.snapshot).includes('responseHash'));assert.ok(!JSON.stringify(source.snapshot).includes('rawContext'));
+const report={file:path,bytes:fs.statSync(path).size,sha256:createHash('sha256').update(fs.readFileSync(path)).digest('hex'),duration:Number(info.format.duration),video:{codec:video.codec_name,width:video.width,height:video.height,pixelFormat:video.pix_fmt,fps:video.avg_frame_rate,frames:Number(video.nb_frames)},audio:{codec:audio.codec_name,sampleRate:Number(audio.sample_rate),channels:audio.channels,duration:Number(audio.duration)},fullDecode:'pass',captions:{cues:cues.length,measuredSegmentBounds:'pass',nonoverlap:'pass',withinFilm:'pass',alignment:'Measured clip boundaries; not independently forced-aligned word timing'},allocation:{mode:'qloo',initialPlacements:8,retainedPlacements:7,changes:2,lockedB:'unchanged'},source:{minimalDerivedRanks:'pass',rawTraceExcluded:'pass'}};
+fs.mkdirSync('qa',{recursive:true});fs.writeFileSync('qa/encoded-check.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));

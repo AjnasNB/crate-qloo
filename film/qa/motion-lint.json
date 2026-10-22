@@ -1,0 +1,139 @@
+{
+  "file": "index.html",
+  "width": 1920,
+  "height": 1080,
+  "duration": 33.166666666666664,
+  "samples": [
+    0.46,
+    1.38,
+    2.3,
+    3.22,
+    4.15,
+    5.07,
+    5.99,
+    6.91,
+    7.83,
+    8.75,
+    9.67,
+    10.59,
+    11.52,
+    12.44,
+    13.36,
+    14.28,
+    15.2,
+    16.12,
+    17.04,
+    17.97,
+    18.89,
+    19.81,
+    20.73,
+    21.65,
+    22.57,
+    23.49,
+    24.41,
+    25.34,
+    26.26,
+    27.18,
+    28.1,
+    29.02,
+    29.94,
+    30.86,
+    31.78,
+    32.71
+  ],
+  "rules": [
+    {
+      "id": "C1",
+      "name": "corner/edge micro-label",
+      "status": "PASS",
+      "hits": []
+    },
+    {
+      "id": "C2",
+      "name": "tracked uppercase label",
+      "status": "PASS",
+      "hits": []
+    },
+    {
+      "id": "C3",
+      "name": "chapter / counter index",
+      "status": "PASS",
+      "hits": []
+    },
+    {
+      "id": "C4",
+      "name": "production metadata (BPM/FPS/timecode/version)",
+      "status": "PASS",
+      "hits": []
+    },
+    {
+      "id": "C5",
+      "name": "mono micro-label",
+      "status": "PASS",
+      "hits": []
+    },
+    {
+      "id": "C6",
+      "name": "header/footer bar or row",
+      "status": "PASS",
+      "hits": []
+    },
+    {
+      "id": "C7",
+      "name": "kicker above headline",
+      "status": "PASS",
+      "hits": []
+    },
+    {
+      "id": "D1",
+      "name": "deck layout (left-anchored headline block)",
+      "status": "PASS",
+      "hits": []
+    },
+    {
+      "id": "P1",
+      "name": "progress bar",
+      "status": "PASS",
+      "hits": []
+    },
+    {
+      "id": "T1",
+      "name": "letter-typed headline",
+      "status": "PASS",
+      "hits": []
+    },
+    {
+      "id": "V1",
+      "name": "greeting header",
+      "status": "PASS",
+      "hits": []
+    },
+    {
+      "id": "V2",
+      "name": "label . value line",
+      "status": "PASS",
+      "hits": []
+    },
+    {
+      "id": "V3",
+      "name": "status dot beside text",
+      "status": "PASS",
+      "hits": []
+    },
+    {
+      "id": "V4",
+      "name": "zinc-grey text",
+      "status": "PASS",
+      "hits": []
+    },
+    {
+      "id": "V5",
+      "name": "vibe-coded UI card (cluster)",
+      "status": "PASS",
+      "hits": []
+    }
+  ],
+  "exemptions": [],
+  "gate": "PASS",
+  "failed": []
+}

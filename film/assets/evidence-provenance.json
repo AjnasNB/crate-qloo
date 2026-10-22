@@ -1,0 +1,8 @@
+{
+  "source": "Parent evidence/cloudflare-export-check/crate-evidence-snapshot.json",
+  "sha256": "79392f78549f9695e51774996ad5a11ab894ffa1daa4ab02c81c2909d184db94",
+  "measuredAt": "2026-10-22T07:37:24.327Z",
+  "documentation": "../docs/CLOUDFLARE.md",
+  "captureTime": "2026-10-22T08:16:31.782Z",
+  "notice": "Derived ordinal orders only; source response/trace omitted. Captured UI is a later retrieval with identical initial orders."
+}

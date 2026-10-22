@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Crate — One copy cannot leave twice</title>
+<style>
+@font-face{font-family:Georgia;src:url('assets/local-fonts/georgia.ttf') format('truetype');font-weight:400;font-display:block}
+@font-face{font-family:'Segoe UI';src:url('assets/local-fonts/segoeui.ttf') format('truetype');font-weight:400;font-display:block}
+@font-face{font-family:'Segoe UI';src:url('assets/local-fonts/segoeuib.ttf') format('truetype');font-weight:600 800;font-display:block}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#e6e9df}
+#main{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;color:#172d2b;font-family:'Segoe UI',sans-serif}
+.world{position:absolute;inset:0;background:linear-gradient(135deg,#f8f8ef,#e2e7d9)}
+#physical-world{position:absolute;inset:0;width:100%;height:100%}
+.copy{position:absolute;left:260px;right:260px;text-align:center;z-index:5;font:400 82px/1.16 Georgia,serif}
+#opening-words{top:60px;font-size:74px}#one-copy{top:65px;font-size:70px}#stock-out{top:65px;font-size:74px}
+#protected{top:75px;font:400 66px/1.2 'Segoe UI',sans-serif;color:#285544}#replacement-name{top:75px;font-size:72px}#promise-words{top:75px;font-size:76px}
+#evidence-proof,#programme-proof{position:absolute;inset:0;overflow:hidden;z-index:10;background:#f4f6f1}
+#evidence-photo,#programme-photo{position:absolute;left:0;top:0;width:1905px;height:938px;max-width:none;transform-origin:0 0}
+#closing{position:absolute;inset:0;z-index:20;background:linear-gradient(135deg,#f4f6f1,#dde6d5);display:flex;align-items:center;justify-content:center}
+#closing-inner{width:1500px;text-align:center}.signature{display:flex;align-items:center;justify-content:center;gap:28px;font:600 180px/1 'Segoe UI',sans-serif;letter-spacing:-8px}
+.signature img{width:153px;height:153px}.credit{font:400 48px/1.4 'Segoe UI',sans-serif;margin-top:60px}
+</style></head><body>
+<div data-hf-id="hf-t2mu" id="main" data-composition-id="main" data-start="0" data-duration="33.166666666666664" data-width="1920" data-height="1080">
+<div data-hf-id="hf-ju9w" id="world-surface" class="world"><canvas data-hf-id="hf-51ku" id="physical-world"></canvas></div>
+<div data-hf-id="hf-zzlg" id="opening-words" class="copy">Two pop-ups. One stockroom.</div><div data-hf-id="hf-lras" id="one-copy" class="copy">One copy.</div>
+<div data-hf-id="hf-ezl2" id="stock-out" class="copy">Sold out.</div><div data-hf-id="hf-rtfn" id="protected" class="copy">Soul &amp; City stays packed.</div>
+<div data-hf-id="hf-fzf7" id="replacement-name" class="copy">Kindred takes its place.</div><div data-hf-id="hf-16ob" id="promise-words" class="copy">Good books. The right crowd.</div>
+<div data-hf-id="hf-qrsj" id="evidence-proof" data-ui="captured"><img data-hf-id="hf-2rxa" id="evidence-photo" src="assets/live-evidence.png" alt="Actual Crate live Qloo evidence, captured on the direct Cloudflare Worker."></div>
+<div data-hf-id="hf-mw98" id="programme-proof" data-ui="captured"><img data-hf-id="hf-etzx" id="programme-photo" src="assets/live-packed.png" alt="Actual programme interests: Janelle Monáe and Blade Runner 2049."></div>
+<div data-hf-id="hf-qyiq" id="closing"><div data-hf-id="hf-5en5" id="closing-inner"><div data-hf-id="hf-yxbt" class="signature"><img data-hf-id="hf-vmwg" src="assets/crate.svg" alt="Crate">crate.</div><div data-hf-id="hf-pwtl" class="credit">Developed by Ajnas N B</div></div></div>
+<audio data-hf-id="hf-h6ig" id="narration" src="assets/audio/mix.wav" data-start="0" data-duration="33.166666666666664" data-track-index="3"></audio>
+</div><script type="module" src="runtime/hero3d/vendor/three.module.js"></script><script src="runtime/vendor/gsap.min.js"></script><script src="runtime/motion.js"></script>
+<!-- FILM_SOURCE -->
+<script>
+window.CRATE_DATA={"books":[{"id":"b1","entityId":"40e2e5ee-a52c-4dea-986a-42f3e1b7e28b","title":"Kindred","author":"Octavia E. Butler","quantity":1,"reserve":0,"ageDays":184,"price":17,"color":"#de7754"},{"id":"b2","entityId":"471011b7-34b3-43fe-bcc1-23294ffd6cfb","title":"Parable of the Sower","author":"Octavia E. Butler","quantity":2,"reserve":0,"ageDays":226,"price":18,"color":"#a59365"},{"id":"b3","entityId":"c75ea743-c08d-4dbf-b456-ac6b71ac14ac","title":"The Dispossessed","author":"Ursula K. Le Guin","quantity":1,"reserve":0,"ageDays":318,"price":19,"color":"#788368"},{"id":"b4","entityId":"4d73c871-cc0f-4fc8-88cd-7c59b26e087e","title":"The Left Hand of Darkness","author":"Ursula K. Le Guin","quantity":2,"reserve":1,"ageDays":149,"price":18,"color":"#6c8990"},{"id":"b5","entityId":"1111fc9c-2e04-4d7a-abc4-29e957880366","title":"The Lathe of Heaven","author":"Ursula K. Le Guin","quantity":2,"reserve":0,"ageDays":267,"price":17,"color":"#817394"},{"id":"b6","entityId":"52d16352-df46-4cf4-9b40-eec1fa3011d8","title":"Giovanni’s Room","author":"James Baldwin","quantity":1,"reserve":0,"ageDays":198,"price":16,"color":"#bc727d"},{"id":"b7","entityId":"0300e9be-da79-4805-bdbf-8c45e46ba07b","title":"If Beale Street Could Talk","author":"James Baldwin","quantity":2,"reserve":0,"ageDays":123,"price":17,"color":"#b89b4d"},{"id":"b8","entityId":"8b7b61c3-bf4d-4b18-a443-13db229dc913","title":"Beloved","author":"Toni Morrison","quantity":2,"reserve":1,"ageDays":174,"price":18,"color":"#986c5e"},{"id":"b9","entityId":"122c0f36-5a9b-4030-8bc1-cbdeea5cc6ce","title":"Jazz","author":"Toni Morrison","quantity":2,"reserve":0,"ageDays":241,"price":17,"color":"#c28449"},{"id":"b10","entityId":"3adbb2a8-6788-4cd9-93c4-417caf2c789b","title":"Never Let Me Go","author":"Kazuo Ishiguro","quantity":2,"reserve":0,"ageDays":212,"price":18,"color":"#729591"},{"id":"b11","entityId":"23e536b4-9185-4c01-ae22-2d65a8c9cecc","title":"Station Eleven","author":"Emily St. John Mandel","quantity":2,"reserve":0,"ageDays":156,"price":18,"color":"#8c91a0"},{"id":"b12","entityId":"55908017-4cfd-4688-9a7e-7b1ff04b171d","title":"Piranesi","author":"Susanna Clarke","quantity":1,"reserve":0,"ageDays":289,"price":19,"color":"#71917e"}],"events":[{"id":"a","name":"Future Frequencies","slots":4,"anchors":[{"name":"Janelle Monáe","type":"artist","entityId":"5032d31e-1b79-4a40-901d-dcddfa0f4493"},{"name":"Blade Runner 2049","type":"movie","entityId":"3a02361c-987b-4f7e-9aad-071c3853ad92"}]},{"id":"b","name":"Soul & City","slots":4,"anchors":[{"name":"Nina Simone","type":"artist","entityId":"aeb7da4d-d5a8-43f1-9881-74da17d8d521"},{"name":"Moonlight","type":"movie","entityId":"2955f3c4-36ab-49f3-a818-3597f35ef46c"}]}],"snapshot":{"mode":"qloo","retrievedAt":"2026-10-22T07:37:24.327Z","candidateIds":["b1","b2","b3","b4","b5","b6","b7","b8","b9","b10","b11","b12"],"profiles":{"a":{"orderedIds":["b7","b3","b2","b5","b8","b1","b6","b9","b4","b10","b11","b12"],"candidateCount":12},"b":{"orderedIds":["b8","b7","b10","b6","b5","b3","b9","b2","b1","b11","b12","b4"],"candidateCount":12}},"notes":["Minimal derived rank record from the direct Cloudflare live snapshot; full raw response stays outside Git. See ../docs/CLOUDFLARE.md."]},"original":{"feasible":true,"assignments":{"a":["b7","b3","b2","b5"],"b":["b8","b7","b10","b6"]},"changes":[],"diagnostics":[],"utility":700,"changeCount":0},"repaired":{"feasible":true,"assignments":{"a":["b7","b2","b5","b1"],"b":["b8","b7","b10","b6"]},"changes":[{"eventId":"a","bookId":"b3","action":"remove"},{"eventId":"a","bookId":"b1","action":"add"}],"diagnostics":[],"utility":666.6666666666666,"changeCount":2}};
+
+window.CRATE_TIMING={"provider":"Kokoro-82M v1.0 local ONNX","voice":"af_heart","speed":0.9,"sampleRate":24000,"duration":33.166666666666664,"lines":[{"id":"depart","text":"Two pop-ups. One stockroom.","start":0.25,"duration":1.9016,"end":2.1516},{"id":"scarce","text":"The Dispossessed has one copy. Which crate gets it?","start":2.6016,"duration":3.2185,"end":5.8201},{"id":"evidence","text":"Crate uses live Qloo evidence to connect each programme with books already in stock.","start":6.2701,"duration":5.6107,"end":11.8808},{"id":"pack","text":"Then it packs both stalls without promising the same copy twice.","start":12.7808,"duration":3.904,"end":16.6848},{"id":"stockout","text":"Now that copy sells out. Soul and City is already packed.","start":17.1348,"duration":3.6907,"end":20.8255},{"id":"lock","text":"Keep it locked. Repair the other crate.","start":21.2755,"duration":2.2827,"end":23.5581},{"id":"repair","text":"Kindred takes the open slot. The other seven placements stay.","start":24.0081,"duration":3.8187,"end":27.8268},{"id":"promise","text":"Good books. The right crowd.","start":28.2768,"duration":1.664,"end":29.9408},{"id":"credit","text":"Crate. Developed by Ajnas N B.","start":30.3908,"duration":2.304,"end":32.6948}]};
+
+/* Every visible pose is a pure function of the Motion frame clock. */
+const data = window.CRATE_DATA, audio = window.CRATE_TIMING;
+const duration = Math.ceil(audio.duration * 30) / 30;
+const cues = Object.fromEntries(audio.lines.map(line => [line.id, line]));
+const at = id => cues[id].start, frame = time => Math.round(time * 30);
+const M = Motion.film({fps:30,duration,width:1920,height:1080,clock:'smooth'});
+const books = Object.fromEntries(data.books.map(book => [book.id,book]));
+const proofIn=at('evidence'), proofOut=at('pack'), ending=at('credit')-.05;
+
+function textLines(ctx,text,width,font,x,y,leading){
+  ctx.font=font; let current='';
+  for(const word of text.split(' ')){
+    const next=current?current+' '+word:word;
+    if(ctx.measureText(next).width>width&&current){ctx.fillText(current,x,y);y+=leading;current=word;}else current=next;
+  }
+  if(current)ctx.fillText(current,x,y);
+}
+function bookTexture(THREE,book){
+  const c=document.createElement('canvas');c.width=768;c.height=1080;const ctx=c.getContext('2d');
+  ctx.fillStyle=book.color;ctx.fillRect(0,0,768,1080);
+  ctx.fillStyle='#ffffff0b';for(let x=0;x<768;x+=5)ctx.fillRect(x,0,1,1080);
+  ctx.fillStyle='#142c2514';for(let y=0;y<1080;y+=7)ctx.fillRect(0,y,768,1);
+  const shade=ctx.createLinearGradient(0,0,80,0);shade.addColorStop(0,'#122a2538');shade.addColorStop(.5,'#122a2510');shade.addColorStop(1,'#ffffff00');
+  ctx.fillStyle=shade;ctx.fillRect(0,0,80,1080);ctx.fillStyle='#10261f';
+  textLines(ctx,book.author,620,'36px "Segoe UI"',64,122,48);
+  textLines(ctx,book.title,630,'88px Georgia',64,305,102);
+  const map=new THREE.CanvasTexture(c);map.colorSpace=THREE.SRGBColorSpace;map.anisotropy=8;return map;
+}
+const A=[-3.55,-1.1,0],B=[3.55,-1.1,-.3];
+const slots=[[-.96,1.23],[.96,1.23],[-.96,-1.35],[.96,-1.35]];
+const slot=(event,index)=>{const base=event==='a'?A:B;return[base[0]+slots[index][0],-.72,base[2]+slots[index][1]];};
+const placements=data.original.assignments.a.map((id,i)=>({key:`a${i}`,id,event:'a',index:i}))
+  .concat(data.original.assignments.b.map((id,i)=>({key:`b${i}`,id,event:'b',index:i})));
+
+M.hero3d('#physical-world',{
+  module:new URL('./runtime/hero3d/hero3d.js',document.baseURI).href,
+  envMap:'room',toneMapping:'neutral',ground:{y:-1.37,opacity:.3},key:{position:[-6,12,8],intensity:2.7},rim:{position:[9,7,-7],intensity:1.2},
+  camera:{fov:34,position:[1.3,2.7,9],target:[0,.1,1]},
+  build:async THREE=>{
+    await document.fonts.ready;const result={};
+    const cloth=color=>new THREE.MeshStandardMaterial({color,roughness:.86,metalness:0});
+    const wood=cloth('#c5ae8b'),pale=cloth('#ede9dc'),green=cloth('#285544'),edge=cloth('#c4c3b6');
+    const grain=document.createElement('canvas');grain.width=1024;grain.height=128;const grainInk=grain.getContext('2d');
+    grainInk.fillStyle='#c5ae8b';grainInk.fillRect(0,0,1024,128);grainInk.strokeStyle='#80674430';grainInk.lineWidth=1;
+    for(let row=0;row<128;row+=4){grainInk.beginPath();for(let x=0;x<=1024;x+=8){const y=row+Math.sin(x*.01+row*.14)*1.7;if(x===0)grainInk.moveTo(x,y);else grainInk.lineTo(x,y);}grainInk.stroke();}
+    wood.map=new THREE.CanvasTexture(grain);wood.map.colorSpace=THREE.SRGBColorSpace;
+    function box(w,h,d,mat,x=0,y=0,z=0){const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);mesh.position.set(x,y,z);mesh.castShadow=true;mesh.receiveShadow=true;return mesh;}
+    const desk=new THREE.Mesh(new THREE.PlaneGeometry(70,70),cloth('#e6e9df'));desk.rotation.x=-Math.PI/2;desk.position.y=-1.38;desk.receiveShadow=true;result.desk=desk;
+    function label(text){
+      const c=document.createElement('canvas');c.width=1024;c.height=160;const ctx=c.getContext('2d');
+      ctx.fillStyle='#e5dbc2';ctx.fillRect(0,0,1024,160);ctx.fillStyle='#263f32';ctx.font='60px Georgia';ctx.textAlign='center';ctx.fillText(text,512,104);
+      const map=new THREE.CanvasTexture(c);map.colorSpace=THREE.SRGBColorSpace;return new THREE.MeshBasicMaterial({map});
+    }
+    for(const [id,base,title]of[['crateA',A,'Future Frequencies'],['crateB',B,'Soul & City']]){
+      const group=new THREE.Group();group.add(box(4.75,.16,5.4,pale,0,-.11,0));
+      for(const z of[-2.74,2.74]){group.add(box(4.95,.34,.12,wood,0,.08,z));group.add(box(4.95,.34,.12,wood,0,.56,z));}
+      for(const x of[-2.44,2.44])group.add(box(.12,.95,5.6,wood,x,.36,0));
+      for(const x of[-2.25,2.25])for(const z of[-2.62,2.62])group.add(box(.18,1.03,.18,wood,x,.32,z));
+      const tag=new THREE.Mesh(new THREE.PlaneGeometry(3.65,.57),label(title));tag.position.set(0,.5,2.813);group.add(tag);
+      group.position.set(...base);result[id]=group;
+    }
+    function makeBook(book){
+      const group=new THREE.Group(),cover=cloth(book.color);
+      group.add(box(1.75,2.48,.035,cover,0,0,-.15));group.add(box(1.63,2.38,.24,pale,.018,0,0));group.add(box(.095,2.48,.33,cover,-.84,0,0));
+      const face=new THREE.Mesh(new THREE.BoxGeometry(1.75,2.48,.035),[cover,cover,cover,cover,new THREE.MeshBasicMaterial({map:bookTexture(THREE,book)}),cover]);
+      face.position.z=.15;group.add(face);
+      for(let y=-1.1;y<1.1;y+=.056)group.add(box(.003,.003,.23,edge,.835,y,0));return group;
+    }
+    for(const p of placements)result[p.key]=makeBook(books[p.id]);result.replacement=makeBook(books.b1);
+    const band=new THREE.Group();band.add(box(.42,.06,5.75,green));band.add(box(5.05,.06,.42,green,0,.01,0));band.position.set(B[0],-.25,B[2]);result.band=band;
+    return result;
+  },
+  state:(t,objects,{key})=>{
+    const pack=at('pack'),out=at('stockout'),lock=at('lock'),repair=at('repair');
+    const cameraPosition=key(t,[[0,[1.3,2.7,9]],[at('scarce'),[0,4.6,12.6],'glide'],[proofIn-.15,[.4,3.7,9.4],'gentleIn'],[proofOut,[0,9.5,13.1]],
+      [pack+1.25,[0,9.1,12.8],'glide'],[out-.15,[-.3,9.3,12.6]],[out+1.3,[-3.6,6.6,8.8],'glide'],[lock-.15,[2.3,7.2,9.4],'glide'],
+      [lock+1.3,[3.5,6.4,8.3],'glide'],[repair-.12,[-3.5,7.1,9.5],'softInOut'],[repair+2.1,[-2.8,6.4,8.8],'glide'],
+      [at('promise'),[-.2,9.7,13.4],'softInOut'],[ending,[0,10,13.8],'glide'],[duration,[0,10.2,14.1]]]);
+    const target=key(t,[[0,[0,.05,1]],[at('scarce'),[0,-.25,.5]],[pack,[0,-1,0]],[out-.1,[0,-1,0]],[out+1.3,[-3.3,-.35,.75]],
+      [lock-.15,[2.7,-.75,0]],[lock+1.3,[3.5,-.8,0]],[repair-.1,[-3.5,-.4,1]],[at('promise'),[0,-.8,0]]]);
+    const states={};
+    for(const p of placements){
+      const dest=slot(p.event,p.index),onset=pack+.1+placements.indexOf(p)*.24,special=p.key==='a1';
+      let position=key(t,[[0,[special?0:(p.event==='a'?-10:10),special?.2:4,special?1.7:0]],
+        [at('scarce'),[special?-.6:(p.event==='a'?-10:10),special?.45:4,special?1.4:0]],
+        [proofIn-.6,[special?.55:(p.event==='a'?-10:10),special?.6:4,special?1.5:0]],
+        [onset,[special?0:(p.event==='a'?-8:8),3.5,3]],[onset+.7,dest,'softLand']]);
+      let rotation=key(t,[[0,[-.08,-.32,-.08]],[at('scarce'),[-.06,.24,.035],'glide'],[onset,[-.3,p.event==='a'?.28:-.28,-.12]],[onset+.7,[-Math.PI/2,0,0],'softLand']]);
+      const scale=special?key(t,[[0,[1.7,1.7,1.7]],[at('scarce'),[1.5,1.5,1.5]],[onset,[1.5,1.5,1.5]],[onset+.7,[1,1,1],'softLand']]):[1,1,1];
+      if(special&&t>=out){position=key(t,[[out,dest],[out+.55,[dest[0],1.15,dest[2]+.45],'softLand'],[out+1.15,[-9,3.2,2],'accelExit']]);
+        rotation=key(t,[[out,[-Math.PI/2,0,0]],[out+.55,[-.2,-.2,-.1],'glide'],[out+1.15,[.3,-.8,-.35],'accelExit']]);}
+      states[p.key]={position,rotation,scale,visible:special?t<out+1.15:t>=onset-.05};
+    }
+    states.replacement={position:key(t,[[0,[-8,3,2]],[repair-.15,[-8,3,2]],[repair+.55,[-3.2,1.2,2.3],'softLand'],[repair+1.35,slot('a',1),'softLand']]),
+      rotation:key(t,[[0,[-.12,.4,.1]],[repair+.55,[-.12,.25,.06]],[repair+1.35,[-Math.PI/2,0,0],'softLand']]),visible:t>=repair-.15};
+    states.band={position:[B[0],key(t,[[0,3],[lock,3],[lock+.45,-.28,'softLand']]),B[2]],visible:t>=lock};
+    return{camera:{position:cameraPosition,target,fov:34},objects:states,keyIntensity:2.7,keyPosition:[-6+.025*t,12,8]};
+  }
+});
+
+M.show('#programme-proof',frame(proofIn-.9),frame(proofIn+1.2));
+M.camera('#programme-photo',[[frame(proofIn-.9),{scale:5.2,x:960-5.2*718,y:540-5.2*505}],[frame(proofIn+1.2),{scale:5.2,x:960-5.2*725,y:540-5.2*512}]],{origin:'0% 0%'});
+M.show('#evidence-proof',frame(proofIn+1.2),frame(proofOut));
+M.camera('#evidence-photo',[[frame(proofIn+1.2),{scale:4.25,x:960-4.25*860,y:470-4.25*218}],
+  [frame(proofIn+1.8),{scale:4.25,x:960-4.25*900,y:470-4.25*218},'glide'],
+  [frame(proofIn+2.5),{scale:4.25,x:960-4.25*805,y:440-4.25*530},'softInOut'],
+  [frame(proofIn+3.7),{scale:4.25,x:960-4.25*805,y:440-4.25*570}],
+  [frame(proofIn+4.2),{scale:4.25,x:960-4.25*1083,y:440-4.25*530},'softInOut'],
+  [frame(proofOut),{scale:4.25,x:960-4.25*1083,y:440-4.25*570}]],{origin:'0% 0%'});
+
+M.show('#opening-words',0,frame(at('scarce')-.1));M.words('#opening-words',{at:2,mech:'rise',dist:42,gaps:[5,5,8],frames:12});
+M.kf('#opening-words','y',[[0,0],[frame(at('scarce')-.1),-25]]);
+M.show('#one-copy',frame(at('scarce')+.1),frame(proofIn-.2));M.words('#one-copy',{at:frame(at('scarce')+.1),mech:'rise',dist:35,gaps:5});
+M.show('#stock-out',frame(at('stockout')+.12),frame(at('lock')-.12));M.words('#stock-out',{at:frame(at('stockout')+.12),mech:'slide',dist:60,gaps:4});
+M.show('#protected',frame(at('lock')+.38),frame(at('repair')-.18));M.enter('#protected',{at:frame(at('lock')+.38),frames:12,from:{y:32,scale:1.12}});
+M.show('#replacement-name',frame(at('repair')+.65),frame(at('promise')-.1));M.enter('#replacement-name',{at:frame(at('repair')+.65),frames:14,from:{y:35}});
+M.show('#promise-words',frame(at('promise')),frame(ending));M.words('#promise-words',{at:frame(at('promise')),mech:'rise',gaps:[6,6,9,6,6],dist:45,frames:13});
+M.show('#closing',frame(ending),frame(duration)+1);
+// The packing label travels into its final pose through the spoken credit.
+// It settles only after the name, rather than holding a near-static slow zoom.
+M.camera('#closing-inner',[[frame(ending),{x:-220,y:100,scale:1.32}],
+  [frame(duration-.6),{x:40,y:-30,scale:1}]],{origin:'50% 50%'});
+for(const[t,label]of[[proofIn-.9,'actual programme interests'],[proofIn+1.2,'live evidence macro'],[proofOut,'returned order to physical packing'],[ending,'Crate close']])M.mark(frame(t),'cut',label);
+window.__ready=Motion.loaded().then(()=>{
+  const seek=Motion.selfTest(M,{samples:18});
+  if(!seek.ok)throw new Error('Frame-clock self-test found a seek mismatch.');
+  window.__filmReady={duration,placements:placements.length,stockout:'b3',replacement:'b1',mode:data.snapshot.mode,seek};
+});
+
+window.__timelines["main"] = M.tl;
+</script>
+<!-- /FILM_SOURCE -->
+</body></html>

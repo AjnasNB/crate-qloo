@@ -1,0 +1,57 @@
+{
+  "mode": "qloo",
+  "retrievedAt": "2026-10-22T07:37:24.327Z",
+  "candidateIds": [
+    "b1",
+    "b2",
+    "b3",
+    "b4",
+    "b5",
+    "b6",
+    "b7",
+    "b8",
+    "b9",
+    "b10",
+    "b11",
+    "b12"
+  ],
+  "profiles": {
+    "a": {
+      "orderedIds": [
+        "b7",
+        "b3",
+        "b2",
+        "b5",
+        "b8",
+        "b1",
+        "b6",
+        "b9",
+        "b4",
+        "b10",
+        "b11",
+        "b12"
+      ],
+      "candidateCount": 12
+    },
+    "b": {
+      "orderedIds": [
+        "b8",
+        "b7",
+        "b10",
+        "b6",
+        "b5",
+        "b3",
+        "b9",
+        "b2",
+        "b1",
+        "b11",
+        "b12",
+        "b4"
+      ],
+      "candidateCount": 12
+    }
+  },
+  "notes": [
+    "Minimal derived rank record from the direct Cloudflare live snapshot; full raw response stays outside Git. See ../docs/CLOUDFLARE.md."
+  ]
+}

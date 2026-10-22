@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+const timing=JSON.parse(fs.readFileSync(new URL('assets/audio/timing.json',import.meta.url),'utf8'));
+const duration=Math.ceil(timing.duration*30)/30;
+fs.mkdirSync(new URL('renders/',import.meta.url),{recursive:true});
+fs.writeFileSync(new URL('assets/timing.js',import.meta.url),`window.CRATE_TIMING=${JSON.stringify(timing)};\n`);
+const html=new URL('index.html',import.meta.url);
+let document=fs.readFileSync(html,'utf8').replaceAll(/data-duration="[0-9.]+"/g,`data-duration="${duration}"`);
+const source=['assets/data.js','assets/timing.js','film.js'].map(path=>fs.readFileSync(new URL(path,import.meta.url),'utf8')).join('\n');
+document=document.replace(/<!-- FILM_SOURCE -->[\s\S]*?<!-- \/FILM_SOURCE -->/,`<!-- FILM_SOURCE -->\n<script>\n${source}\nwindow.__timelines["main"] = M.tl;\n</script>\n<!-- /FILM_SOURCE -->`);
+fs.writeFileSync(html,document);
+const stamp=t=>{const ms=Math.round(t*1000);return`${String(Math.floor(ms/3600000)).padStart(2,'0')}:${String(Math.floor(ms/60000)%60).padStart(2,'0')}:${String(Math.floor(ms/1000)%60).padStart(2,'0')}.${String(ms%1000).padStart(3,'0')}`;};
+fs.writeFileSync(new URL('assets/crate-live-demo.vtt',import.meta.url),'WEBVTT\n\n'+timing.lines.map((line,i)=>`${i+1}\n${stamp(line.start)} --> ${stamp(line.end)}\n${line.text}\n`).join('\n'));
+fs.writeFileSync(new URL('renders/events.json',import.meta.url),JSON.stringify([{t:timing.lines.find(l=>l.id==='evidence').start-.9,type:'cut',label:'actual programme interests'},{t:timing.lines.find(l=>l.id==='evidence').start+1.2,type:'cut',label:'actual live evidence'},{t:timing.lines.find(l=>l.id==='pack').start,type:'cut',label:'physical packing'},{t:timing.lines.find(l=>l.id==='credit').start-.05,type:'cut',label:'Crate close'}],null,2));
+console.log(JSON.stringify({duration,captionCues:timing.lines.length}));

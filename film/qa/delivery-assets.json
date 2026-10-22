@@ -1,0 +1,17 @@
+[
+  {
+    "path": "renders/crate-live-demo.mp4",
+    "bytes": 17455515,
+    "sha256": "db971723683eb6ae3f8bb0865f025fe9926566e453c1f7a5fc990b7746763db8"
+  },
+  {
+    "path": "renders/crate-live-demo-poster.jpg",
+    "bytes": 148105,
+    "sha256": "a945b9cfa8c94661907730cfbf3a41750f7cf6d4554a1230dc095eacaf253a1a"
+  },
+  {
+    "path": "assets/crate-live-demo.vtt",
+    "bytes": 754,
+    "sha256": "6cb551dd24ef2deb31addd33165e793dd889bf919ce398573fef043bead181a3"
+  }
+]

@@ -1,0 +1,23 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import { SAMPLE_BOOKS, SAMPLE_EVENTS } from '../lib/sample.ts';
+import { solve } from '../lib/planner.ts';
+
+const root = new URL('./', import.meta.url);
+const snapshot = JSON.parse(fs.readFileSync(new URL('assets/evidence-ranks.json', root), 'utf8'));
+assert.equal(snapshot.mode, 'qloo');
+assert.equal(snapshot.retrievedAt, '2026-10-22T07:37:24.327Z');
+const original = solve({ books: SAMPLE_BOOKS, events: SAMPLE_EVENTS, evidence: snapshot, pins: {}, vetoes: {} });
+assert.equal(original.feasible, true);
+assert.deepEqual(original.assignments.a, ['b7','b3','b2','b5']);
+assert.deepEqual(original.assignments.b, ['b8','b7','b10','b6']);
+const books = SAMPLE_BOOKS.map(book => book.id === 'b3' ? { ...book, quantity: 0 } : book);
+const repaired = solve({ books, events: SAMPLE_EVENTS, evidence: snapshot, pins: { b: original.assignments.b }, vetoes: {}, previous: original.assignments });
+assert.equal(repaired.feasible, true);
+assert.deepEqual(repaired.assignments.a, ['b7','b2','b5','b1']);
+assert.deepEqual(repaired.assignments.b, original.assignments.b);
+assert.equal(repaired.changeCount, 2);
+const data = { books: SAMPLE_BOOKS, events: SAMPLE_EVENTS, snapshot, original, repaired };
+fs.writeFileSync(new URL('assets/data.json', root), JSON.stringify(data, null, 2));
+fs.writeFileSync(new URL('assets/data.js', root), `window.CRATE_DATA=${JSON.stringify(data)};\n`);
+console.log('Verified original 8 placements, stock-out repair b3 → b1, locked B unchanged; two add/remove changes.');
