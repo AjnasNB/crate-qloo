@@ -1,6 +1,6 @@
 # Prepared bookseller invitations
 
-Prepared and sent October 22, 2026 after specific user authorization. **Three individual messages were sent and reread from Gmail's Sent messages; no shop participation or completed trial is verified yet.** Each message includes the free-trial wording and custom-domain links below. Public business addresses only. No bulk mail, attachments, tracking, payment or endorsement request. Do not send follow-ups automatically. Private message IDs and verification receipts stay outside Git.
+Prepared and sent October 22, 2026 after specific user authorization. **Two batches of three individual invitations were sent and reread from Gmail's Sent messages; no shop participation or completed trial is verified yet.** Each invitation includes free-trial wording and custom-domain links. Public business addresses only. No bulk mail, attachments, tracking, payment or endorsement request. Do not send follow-ups automatically. Private message IDs, replies and verification receipts stay outside Git. A contacted shop is not a partner, tester or endorser.
 
 From: Ajnas N B <ajnasnb@gmail.com>
 
@@ -14,7 +14,7 @@ Subject: Could you help test a small event-bookstall planning tool?
 | Trilogy — books@teltrilogy.com | Its own site advertises pop-up bookshops for themed events. Frequency and simultaneous-stall use are unverified. | [Shop contact](https://www.teltrilogy.com/contact/), [services](https://www.teltrilogy.com/home/) |
 | A Cappella Books — info@acappellabooks.com | Its film-book pop-up at the Tara Theatre closely matches the cultural-event setting. Simultaneous-stall use is unverified. | [Shop contact](https://www.acappellabooks.com/contact.php), [film-book pop-up](https://www.acappellabooks.com/pages/events/1525/a-cappella-at-the-movies-a-film-book-pop-up-sale) |
 
-## Body (one verified opening per recipient, then shared text)
+## Initial batch body (one verified opening per recipient, then shared text)
 
 Champaca opening: I saw MAP's listing for Champaca's curated comics pop-up and thought your event-bookselling experience could help me test whether this idea is useful.
 
@@ -43,6 +43,20 @@ If you're interested, please reply with a suitable time and timezone, or I can s
 Thank you,
 Ajnas N B
 ajnasnb@gmail.com
+
+## Additional batch — October 22
+
+The user explicitly requested two or three more invitations. Duplicate checking found no earlier Crate mail to these addresses. All three additional messages were sent individually and reread to verify sender, recipient, free-trial wording and the `/trial` link.
+
+| Recipient | Primary contact and event evidence | Personalized opening |
+| --- | --- | --- |
+| Lost The Plot Books — hello@losttheplotbooks.com | [Official contact](https://www.losttheplotbooks.com/contact), [mobile fiction shop and events](https://www.losttheplotbooks.com/about) | I saw that your mobile fiction bookshop brings books to pop-ups across Puget Sound and hosts author signings and crafting events. |
+| Good Girl Books — goodgirlbooksknox@gmail.com | [Official shop](https://goodgirlbooks.square.site/): email and Knoxville truck/pop-up operations verified in recently indexed primary-site text; direct page extraction returned no text. | I saw that your Knoxville book truck still visits pop-up events and markets alongside your permanent shop. |
+| Protagonist Black — info@protagonistblack.com | [Official contact, mobile shop and special-event services](https://protagonistblack.com/home/) | Your mobile pop-ups and focus on culturally diverse books and cocktail pairings caught my attention. |
+
+Subject: **Free Crate trial: feedback from an event bookseller?**
+
+This batch used a shorter invitation: a plain description of Crate, the explicit statement **“The trial is completely free, with no payment or account required,”** and a question about whether simultaneous event-stall packing is relevant before inviting an optional conversation or self-guided session. It retains the 45-minute stop, 8–18-title scope, negative/incomplete-feedback welcome, privacy limits, sole developer signature and no-follow-up promise. None of the sources establishes two simultaneous stalls, demand or willingness to participate. The exact sent messages and private response handling remain outside this repository.
 
 ## Evidence discipline
 
