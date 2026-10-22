@@ -1,30 +1,33 @@
 import type { Book, Evidence, Stall } from "./planner";
 
-/** Real bibliographic pairs; all quantities, prices, and shelf ages are fictional. */
+/** Work-level Qloo identities reviewed from live search on 2026-10-22.
+ * Title/author metadata supports these choices; ISBN editions are not certified.
+ * All quantities, prices, and shelf ages remain fictional. See docs/LIVE-QLOO.md.
+ */
 export const SAMPLE_BOOKS: Book[] = [
-  { id: "b1", title: "Kindred", author: "Octavia E. Butler", quantity: 1, reserve: 0, ageDays: 184, price: 17, color: "#de7754" },
-  { id: "b2", title: "Parable of the Sower", author: "Octavia E. Butler", quantity: 2, reserve: 0, ageDays: 226, price: 18, color: "#a59365" },
-  { id: "b3", title: "The Dispossessed", author: "Ursula K. Le Guin", quantity: 1, reserve: 0, ageDays: 318, price: 19, color: "#788368" },
-  { id: "b4", title: "The Left Hand of Darkness", author: "Ursula K. Le Guin", quantity: 2, reserve: 1, ageDays: 149, price: 18, color: "#6c8990" },
-  { id: "b5", title: "The Lathe of Heaven", author: "Ursula K. Le Guin", quantity: 2, reserve: 0, ageDays: 267, price: 17, color: "#817394" },
-  { id: "b6", title: "Giovanni’s Room", author: "James Baldwin", quantity: 1, reserve: 0, ageDays: 198, price: 16, color: "#bc727d" },
-  { id: "b7", title: "If Beale Street Could Talk", author: "James Baldwin", quantity: 2, reserve: 0, ageDays: 123, price: 17, color: "#b89b4d" },
-  { id: "b8", title: "Beloved", author: "Toni Morrison", quantity: 2, reserve: 1, ageDays: 174, price: 18, color: "#986c5e" },
-  { id: "b9", title: "Jazz", author: "Toni Morrison", quantity: 2, reserve: 0, ageDays: 241, price: 17, color: "#c28449" },
-  { id: "b10", title: "Never Let Me Go", author: "Kazuo Ishiguro", quantity: 2, reserve: 0, ageDays: 212, price: 18, color: "#729591" },
-  { id: "b11", title: "Station Eleven", author: "Emily St. John Mandel", quantity: 2, reserve: 0, ageDays: 156, price: 18, color: "#8c91a0" },
-  { id: "b12", title: "Piranesi", author: "Susanna Clarke", quantity: 1, reserve: 0, ageDays: 289, price: 19, color: "#71917e" },
+  { id: "b1", entityId: "40e2e5ee-a52c-4dea-986a-42f3e1b7e28b", title: "Kindred", author: "Octavia E. Butler", quantity: 1, reserve: 0, ageDays: 184, price: 17, color: "#de7754" },
+  { id: "b2", entityId: "471011b7-34b3-43fe-bcc1-23294ffd6cfb", title: "Parable of the Sower", author: "Octavia E. Butler", quantity: 2, reserve: 0, ageDays: 226, price: 18, color: "#a59365" },
+  { id: "b3", entityId: "c75ea743-c08d-4dbf-b456-ac6b71ac14ac", title: "The Dispossessed", author: "Ursula K. Le Guin", quantity: 1, reserve: 0, ageDays: 318, price: 19, color: "#788368" },
+  { id: "b4", entityId: "4d73c871-cc0f-4fc8-88cd-7c59b26e087e", title: "The Left Hand of Darkness", author: "Ursula K. Le Guin", quantity: 2, reserve: 1, ageDays: 149, price: 18, color: "#6c8990" },
+  { id: "b5", entityId: "1111fc9c-2e04-4d7a-abc4-29e957880366", title: "The Lathe of Heaven", author: "Ursula K. Le Guin", quantity: 2, reserve: 0, ageDays: 267, price: 17, color: "#817394" },
+  { id: "b6", entityId: "52d16352-df46-4cf4-9b40-eec1fa3011d8", title: "Giovanni’s Room", author: "James Baldwin", quantity: 1, reserve: 0, ageDays: 198, price: 16, color: "#bc727d" },
+  { id: "b7", entityId: "0300e9be-da79-4805-bdbf-8c45e46ba07b", title: "If Beale Street Could Talk", author: "James Baldwin", quantity: 2, reserve: 0, ageDays: 123, price: 17, color: "#b89b4d" },
+  { id: "b8", entityId: "8b7b61c3-bf4d-4b18-a443-13db229dc913", title: "Beloved", author: "Toni Morrison", quantity: 2, reserve: 1, ageDays: 174, price: 18, color: "#986c5e" },
+  { id: "b9", entityId: "122c0f36-5a9b-4030-8bc1-cbdeea5cc6ce", title: "Jazz", author: "Toni Morrison", quantity: 2, reserve: 0, ageDays: 241, price: 17, color: "#c28449" },
+  { id: "b10", entityId: "3adbb2a8-6788-4cd9-93c4-417caf2c789b", title: "Never Let Me Go", author: "Kazuo Ishiguro", quantity: 2, reserve: 0, ageDays: 212, price: 18, color: "#729591" },
+  { id: "b11", entityId: "23e536b4-9185-4c01-ae22-2d65a8c9cecc", title: "Station Eleven", author: "Emily St. John Mandel", quantity: 2, reserve: 0, ageDays: 156, price: 18, color: "#8c91a0" },
+  { id: "b12", entityId: "55908017-4cfd-4688-9a7e-7b1ff04b171d", title: "Piranesi", author: "Susanna Clarke", quantity: 1, reserve: 0, ageDays: 289, price: 19, color: "#71917e" },
 ];
 
 /** Fictional, separately staffed stalls departing simultaneously. No artist affiliation. */
 export const SAMPLE_EVENTS: Stall[] = [
   { id: "a", name: "Future Frequencies", slots: 4, anchors: [
-    { name: "Janelle Monáe", type: "artist" },
-    { name: "Blade Runner 2049", type: "movie" },
+    { name: "Janelle Monáe", type: "artist", entityId: "5032d31e-1b79-4a40-901d-dcddfa0f4493" },
+    { name: "Blade Runner 2049", type: "movie", entityId: "3a02361c-987b-4f7e-9aad-071c3853ad92" },
   ] },
   { id: "b", name: "Soul & City", slots: 4, anchors: [
-    { name: "Nina Simone", type: "artist" },
-    { name: "Moonlight", type: "movie" },
+    { name: "Nina Simone", type: "artist", entityId: "aeb7da4d-d5a8-43f1-9881-74da17d8d521" },
+    { name: "Moonlight", type: "movie", entityId: "2955f3c4-36ab-49f3-a818-3597f35ef46c" },
   ] },
 ];
 
