@@ -7,6 +7,9 @@
   "compatibility_flags": ["nodejs_compat"],
   "workers_dev": true,
   "preview_urls": false,
+  "routes": [
+    { "pattern": "crate.ajnasnb.com", "custom_domain": true }
+  ],
   "assets": {
     "binding": "ASSETS",
     "not_found_handling": "none",
