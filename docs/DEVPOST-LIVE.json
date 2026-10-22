@@ -1,8 +1,20 @@
 {
-  "status": "prepared",
+  "status": "saved_verified",
   "preparedAt": "2026-10-22",
+  "verifiedAt": "2026-10-22T06:49:33Z",
   "projectUrl": "https://devpost.com/software/crate-6jkox0",
   "submissionId": "1242313-crate",
+  "additionalInfo": "New project for this hackathon. Live Qloo passed October 22: 12/12 books for both programmes, changed-programme rankings, stock-safe repair and native MCP planning. Exact allocation protects reserves and locked crates. Customer outcomes unmeasured.",
+  "verification": {
+    "publicStory": true,
+    "tagline": true,
+    "qlooTag": true,
+    "inlineEvidenceImageLoaded": true,
+    "historicalEvidenceCaption": true,
+    "judgeAdditionalInfo": true,
+    "submissionStatus": "Submitted",
+    "completedSteps": "5/5"
+  },
   "tagline": "Two crowds. One stockroom. Live Qloo book plans that protect shop reserves, editorial choices and already-packed crates.",
   "builtWith": "typescript, react, cloudflare, qloo",
   "historicalEvidenceCaption": "Earlier synthetic-mode evidence screen (October 17). Current live verification is shown in the project story.",
