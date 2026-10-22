@@ -2,7 +2,7 @@
 
 Developed by Ajnas N B
 
-Status: software verification and live cultural-value validation are separate. An approved API key and customer pilot results were not available when this document was prepared. Do not present proposed research or synthetic ranks as measured results.
+Current status, October 22: [live integration passed](LIVE-QLOO.md), including hosted search, reviewed starter mappings, two inventory-restricted profiles, programme-dependent allocation, stock repair and native MCP planning. The complete local suite passes 58/58 checks. Customer usefulness remains unmeasured. The dated October 17 sections below preserve earlier observations and limitations; they are not the current access status.
 
 ## Earlier version 3 checks, October 17, 2026
 

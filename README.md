@@ -8,7 +8,9 @@ Crate is a planning desk for an independent bookstore sending two separately sta
 
 ## Current status
 
-The public source contains a working allocation engine, an interactive synthetic demonstration, and a server-side Qloo adapter. **Qloo access has been requested; no live key or live validation is available yet.** Sample rankings are hand-authored or deterministic simulation fixtures, not Qloo data. This version does not call a language model. Devpost confirmed submission on October 17, 2026 with this limitation disclosed. A submission receipt does not establish eligibility or successful live integration.
+**Live Qloo integration passed on October 22, 2026.** The public app offers a reviewed twelve-title starter catalogue: choose **Use live Qloo**, then **Pack the stalls**. Hosted search, inventory-restricted rankings for both programmes, changed-programme retrieval, stock-safe repair and an installed native MCP planning call passed. See the [measured live record and limits](docs/LIVE-QLOO.md).
+
+Simulation remains explicitly labeled and uses hand-authored or deterministic fixtures. Sample stock and events are fictional. This version does not call a language model. Devpost confirmed the original submission on October 17; its live-status update is prepared and awaiting a working browser connection. Software verification does not establish reader usefulness, customer results or judging acceptance.
 
 Report a workflow blocker through the [sanitized feedback form](https://github.com/AjnasNB/crate-qloo/issues/new?template=workflow-feedback.yml). Do not include private stock files, customer details or credentials.
 
@@ -36,13 +38,13 @@ On Windows, if a package-manager shim fails, invoke npm's installed JavaScript e
 
 These are display allocations: one selected title consumes one copy per stall. Quantities are not demand predictions. Simultaneous departure matters because stock cannot be reused between the two stalls.
 
-## Connect Qloo when approved
+## Configure your own Qloo access
 
 Copy `.env.example` to `.env.local` and set `QLOO_API_KEY`. For the local Worker runtime, also configure the key in the ignored `.dev.vars` file when required by the development host. Never use a `NEXT_PUBLIC_` prefix for credentials. Hosted runtime secrets must be configured in the hosting platform; environment files and keys must never be committed.
 
 The default host is `https://hackathon.api.qloo.com`. Hackathon keys do not work against the production host. `QLOO_API_BASE=https://api.qloo.com` is supported only for a separately authorized production key. No client-supplied host is accepted.
 
-Live mode requires explicit review of book and programme entity matches. Qloo text search is not an ISBN/edition lookup; do not confirm an ambiguous work. Unsupported or unmatched stock needs correction or removal, not an invented match.
+The fixed starter's book and programme matches were reviewed from live metadata on October 22, 2026. Imported stock and changed programme interests require their own explicit review. Qloo text search is not an ISBN/edition lookup; do not confirm an ambiguous work. Unsupported or unmatched stock needs correction or removal, not an invented match.
 
 The adapter uses the documented `/search` and `GET /v2/insights` endpoints. Book requests restrict `filter.results.entities` to the confirmed inventory and pass the confirmed film/artist interests through `signal.interests.entities`. Returned order supplies rank. The trace records request parameters, response hashes, missing candidates, and whether optional explainability was supplied. Stock-only repair reuses evidence; changing a programme requires new retrieval for that context.
 

@@ -1,5 +1,7 @@
 # Devpost entry fields and submission record
 
+Historical October 17 payload. The current live results are in [LIVE-QLOO.md](LIVE-QLOO.md), and the prepared replacement fields are in [DEVPOST-LIVE.json](DEVPOST-LIVE.json). Live validation passed October 22; browser reconnection is required to save and verify the replacement on Devpost.
+
 Prepared October 17, 2026. Crate’s [public project](https://devpost.com/software/crate-6jkox0) has its story and three screenshots saved. Submission `1242313-crate` was confirmed by Devpost’s “Project submitted!” receipt and “SUBMITTED TO Qloo” status after the user explicitly authorized final terms acceptance and submission. Local receipt evidence is `evidence/devpost-crate-submitted.jpg` in the parent workspace. Keep the live-pending status in the public body until successful Qloo validation; submission is not proof of eligibility or live integration.
 
 ## Project name

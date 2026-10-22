@@ -2,7 +2,9 @@
 
 Developed by Ajnas N B
 
-**Submission status: Devpost submission confirmed on October 17, 2026. Live Qloo integration validation and customer evaluation remain pending.** The API access request was submitted and its receipt confirmed on October 17, 2026. Keys are delivered manually, typically within a few business days; no working key or live result has yet been verified. A submission receipt does not establish challenge eligibility or successful Qloo integration.
+**Current status, October 22: the submitted entry exists and live Qloo integration passed.** Hosted entity search, reviewed starter identities, both inventory-restricted profiles, programme-dependent allocation, native MCP planning and public stock-safe repair passed. See [the measured live record](LIVE-QLOO.md). The updated public story and pitch are prepared in [DEVPOST-LIVE.json](DEVPOST-LIVE.json); saving them is awaiting browser reconnection. Customer usefulness remains unmeasured. A submission receipt or working API does not establish judging acceptance.
+
+The access-request receipt and initial submission account below describe October 17, before the issued credential was configured and tested on October 22.
 
 AjnasNB registered for the hackathon on October 17, 2026 after confirming eligibility and authorizing acceptance of its rules. Crate's [own public project](https://devpost.com/software/crate-6jkox0) has its story and three screenshots saved, with the [public motion-video release](https://github.com/AjnasNB/crate-qloo/releases/tag/v0.2.0-motion-prototype) linked in the story. It was imported through the Qloo portfolio workflow into submission `1242313-crate`. After the user's explicit “Accept terms and submit now” authorization, Devpost displayed “Project submitted!” and the project displayed “SUBMITTED TO Qloo”. Local receipt evidence is retained as `evidence/devpost-crate-submitted.jpg` in the parent workspace. The receipt allows continued editing until October 30, 2026 at 11:45 pm EDT; it is not evidence of judging acceptance. Prepared English fields are in [DEVPOST-ENTRY.md](DEVPOST-ENTRY.md), with a checkout-local JSON copy in the ignored `.sites-runtime/devpost-fields.json`.
 
@@ -24,11 +26,11 @@ Import or edit stock, choose explicit film and artist anchors for two sample eve
 
 The sample events are fictional audience hypotheses. They do not claim actual attendee preferences, event bookings, artist affiliation, or sponsorship. Stock quantities, prices, and shelf ages are fictional. The sample book titles and authors are real.
 
-## What Qloo must contribute
+## What Qloo contributes
 
-The intended live workflow resolves cultural inputs and books to genuine Qloo entities, obtains recommendations restricted to the available candidate inventory, and uses within-query rank evidence to guide allocation. The agent must gather evidence, handle missing or ambiguous matches, verify constraints, and repair the plan when inputs change. An LLM does not substitute invented book tastes or identities for API results.
+The live workflow resolves cultural inputs and books to genuine Qloo entities, obtains recommendations restricted to the available candidate inventory, and uses within-query rank evidence to guide allocation. Live tests now demonstrate changed programme rankings, stock-safe repair and native external-tool planning. The app does not call an LLM to invent book tastes or identities.
 
-**Pending proof:** a valid hackathon key; live title/author resolution; supported candidate-restricted queries; credible non-adaptation cross-domain results; and a working hosted end-to-end evidence path. The current synthetic mode demonstrates planning behavior only. Its curated or deterministic-hash rankings are not Qloo results or evidence of cultural affinity. API errors must not silently fall back to apparent live evidence.
+**Remaining proof:** whether booksellers find the cultural bridges useful, adopt the workflow or achieve time/sales improvements. Synthetic mode remains explicitly labeled; its fixture rankings are not Qloo evidence. API errors never silently fall back to apparent live results. The fixed starter maps works, not ISBN-specific editions.
 
 Relevant documentation: [Qloo hackathon developer guide](https://docs.qloo.com/reference/qloo-llm-hackathon-developer-guide), [entity type parameter guide](https://docs.qloo.com/reference/available-parameters-by-entity-type).
 
@@ -47,7 +49,7 @@ The product is a bounded planning prototype. Automated software checks can verif
 
 ## Independent readiness review
 
-The following twelve gates reuse the recorded checks rather than claim a new live or customer trial. Results describe the verified version 3 prototype and the current documentation; source changes or a new deployment require the relevant checks again.
+Historical October 17 review: the following twelve gates describe version 3, before live access. The [October 22 record](LIVE-QLOO.md) supersedes its technical access, coverage and tool gates. These earlier observations are retained as history, not current pending work.
 
 | Gate | Evidence already established | Remaining work |
 | --- | --- | --- |
@@ -64,17 +66,17 @@ The following twelve gates reuse the recorded checks rather than claim a new liv
 | 11. Cultural contribution | The hypothesis and oldest-stock comparison are explicit. No customer or recommendation-quality result is fabricated. | Show useful programme-dependent live rankings and at least one credible non-adaptation bridge. If small-inventory coverage or usefulness fails, revise the claim rather than substitute fixtures. |
 | 12. Saved and final Devpost entry | Crate's own public story and three screenshots are saved; the verified v0.2.0 motion-release link is included. Submission `1242313-crate` showed “Project submitted!” and “SUBMITTED TO Qloo” on October 17, 2026. | Preserve the receipt and keep any later edits truthful. Submission establishes receipt, not Qloo eligibility, live API success or organizer approval. |
 
-The largest unresolved issue is gate 11, dependent on gates 9 and 10: the product can be correct at packing while Qloo adds little useful distinction for the available books. More animation or broader scope does not resolve that risk. Customer evaluation remains a separate future test of utility, not a substitute for live integration.
+The earlier review identified cultural contribution as the largest uncertainty. Live programme-dependent rankings now demonstrate a technical distinction; whether readers or booksellers prefer the resulting choices remains a separate future test.
 
 ## Required links and final gates
 
-- Externally hosted prototype URL: [Crate](https://crate-books-ajnas.foamythyme32.chatgpt.site). Synthetic mode is working; the required live Qloo path remains pending.
+- Externally hosted application: [Crate](https://crate-books-ajnas.foamythyme32.chatgpt.site). Live Qloo and labeled simulation are available; Site version 8 passed the public live workflow.
 - Public source repository URL: [AjnasNB/crate-qloo](https://github.com/AjnasNB/crate-qloo), verified public with GitHub-detected MIT license on October 17, 2026.
 - Submitted project: [Crate on Devpost](https://devpost.com/software/crate-6jkox0), submission receipt confirmed October 17, 2026; [editor](https://devpost.com/software/crate-6jkox0/edit) remains available for authorized updates.
 - Motion-video URL: [v0.2.0 motion prototype release](https://github.com/AjnasNB/crate-qloo/releases/tag/v0.2.0-motion-prototype), publicly released and linked in the submitted story. Its synthetic/pending-live disclosure remains material.
 - Public repository license: MIT; verify the repository recognizes the included `LICENSE` file.
-- Live Qloo evidence: **pending approved key and validation**.
-- Public prototype access: verified on October 17, 2026. Keep the completed live application available free throughout the judging period.
+- Live Qloo evidence: [verified October 22, 2026](LIVE-QLOO.md).
+- Public access: verified October 22, 2026. Keep the application available free throughout judging.
 - Description and instructions in English: prepared here; reconcile against the final implementation.
 
-The organizer requires a functional externally hosted app, public licensed source, and a description; a local-only or synthetic-only demonstration does not establish the required Qloo application. The [challenge requirements](https://qloo.devpost.com/) and [official rules](https://qloo.devpost.com/rules) remain the authority. The entry is submitted, while the unresolved live and usefulness gates above remain open.
+The [challenge requirements](https://qloo.devpost.com/) and [official rules](https://qloo.devpost.com/rules) remain the authority. The entry is submitted and live integration works. The current prepared update still needs to be saved and verified on Devpost; customer evaluation remains future work.

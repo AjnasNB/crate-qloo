@@ -2,6 +2,8 @@
 
 Developed by Ajnas N B
 
+Historical review, October 17. The subsequent [October 22 live verification](LIVE-QLOO.md) closes the technical access, mapping and live-tool gates. Reader usefulness and customer outcomes remain unproved.
+
 This review reuses the sixteen concept and product ledgers. It is a bounded product critique and observed software check, not customer research, sixteen new experiments or a winning-probability estimate.
 
 ## Proposition against the judging criteria

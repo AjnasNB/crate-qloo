@@ -75,7 +75,7 @@ Run `node --test tests/mcp.test.mjs`. Tests use injected mock upstream responses
 
 ## Live verification after access arrives
 
-The separate `tests/live-smoke.mjs` is a manual integration check. Its input-normalization regression is included among the 56 mock/unit tests, but no live network run is part of that suite. It requires a local JSON file containing genuinely reviewed Qloo book and programme identities. It never guesses IDs or accepts a client API key; the configured server owns its credential.
+The separate `tests/live-smoke.mjs` is a manual integration check. Its input-normalization regression is included among the 58 local tests, but live network calls are separate. On October 22 the hosted smoke and installed native `crate_plan_stalls` call passed with reviewed identities; see [the live verification record](LIVE-QLOO.md). `scripts/live-starter-input.mjs` generates the fixed reviewed starter input without a credential or network call. Re-review edited identities. The configured server owns its key; the smoke never guesses IDs or accepts a client API key.
 
 ```sh
 node --experimental-strip-types tests/live-smoke.mjs --help
