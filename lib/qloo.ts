@@ -206,7 +206,9 @@ async function upstream(config: QlooConfig, path: string, parameters: Record<str
   for (const [name, value] of Object.entries(parameters)) url.searchParams.set(name, value);
   const controller = new AbortController(), timer = setTimeout(() => controller.abort(), runtime.timeoutMs ?? QLOO_LIMITS.upstreamMs);
   try {
-    const response = await (runtime.fetchImpl ?? fetch)(url.toString(), { method: "GET", headers: { Accept: "application/json", "X-Api-Key": config.apiKey }, signal: controller.signal, redirect: "error", cache: "no-store" });
+    // Workers rejects redirect: "error" before fetching. Manual mode returns 3xx
+    // to the non-success branch below without forwarding the server credential.
+    const response = await (runtime.fetchImpl ?? fetch)(url.toString(), { method: "GET", headers: { Accept: "application/json", "X-Api-Key": config.apiKey }, signal: controller.signal, redirect: "manual", cache: "no-store" });
     if (!response.ok) {
       await response.body?.cancel();
       if (response.status === 404 && allowNotFound) return { data: { results: [] }, responseHash: "", retrievedAt: (runtime.now?.() ?? new Date()).toISOString() };

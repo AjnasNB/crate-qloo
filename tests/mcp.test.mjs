@@ -144,7 +144,7 @@ test("mocked live tools search, rank and allocate through the same public HTTP c
   assert.deepEqual(planned.result.structuredContent.plan.assignments, { a: ["b0"] });
   assert.equal(planned.result.structuredContent.packingList[0].books[0].copies, 1);
   assert.ok(!JSON.stringify(planned).includes(key));
-  assert.ok(dependencies.calls.every((entry) => entry.options.redirect === "error"));
+  assert.ok(dependencies.calls.every((entry) => entry.options.redirect === "manual"));
 });
 
 test("repair requests refresh evidence and preserve feasible old assignments before utility", async () => {

@@ -89,7 +89,7 @@ test('typed search sends only the approved query and returns text metadata for m
       assert.equal(parsed.searchParams.get('types'), 'urn:entity:book');
       assert.equal(parsed.searchParams.get('query'), 'Title Author');
       assert.equal(init.headers['X-Api-Key'], config.apiKey);
-      assert.equal(init.redirect, 'error');
+      assert.equal(init.redirect, 'manual');
       assert.equal(init.cache, 'no-store');
       assert.ok(!url.includes(config.apiKey));
       return json({ results: [row(ids.first, 'book', '<script>Plain text only</script>')] });
@@ -138,6 +138,29 @@ test('upstream diagnostics reveal only a bounded status or error class', async (
   }), 'QLOO_UNAVAILABLE', 502);
   assert.deepEqual(networkEvents, [{ endpoint: '/search', kind: 'network', errorName: 'Error' }]);
   assert.ok(!JSON.stringify([...httpEvents, ...networkEvents]).includes(config.apiKey));
+});
+
+test('redirects are rejected without following their location or exposing the credential', async () => {
+  for (const status of [301, 302, 303, 307, 308]) {
+    let calls = 0;
+    const diagnostics = [];
+    let failure;
+    try {
+      await searchQloo({ query: 'book', type: 'book' }, config, {
+        diagnostic: (event) => diagnostics.push(event),
+        fetchImpl: async (url, init) => {
+          calls++;
+          assert.equal(new URL(url).origin, config.host);
+          assert.equal(init.redirect, 'manual');
+          return new Response(null, { status, headers: { Location: 'https://unapproved.example/collect' } });
+        },
+      });
+    } catch (error) { failure = error; }
+    assert.equal(calls, 1);
+    assert.equal(failure?.code, 'QLOO_UNAVAILABLE');
+    assert.deepEqual(diagnostics, [{ endpoint: '/search', kind: 'http', status }]);
+    assert.ok(!(await errorResponse(failure).text()).includes(config.apiKey));
+  }
 });
 
 test('invalid JSON, oversized chunked upstream and unapproved host fail closed', async () => {
@@ -204,7 +227,7 @@ test('successful evidence preserves response order, maps local IDs and records m
     assert.equal(parsed.searchParams.get('take'), '3');
     assert.equal(parsed.searchParams.get('feature.explainability'), 'true');
     assert.equal(parsed.searchParams.get('signal.interests.entities'), calls === 0 ? ids.movie : ids.artist);
-    assert.equal(init.redirect, 'error');
+    assert.equal(init.redirect, 'manual');
     return json(bodies[calls++]);
   } });
   assert.equal(calls, 2);
