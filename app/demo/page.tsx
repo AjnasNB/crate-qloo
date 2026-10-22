@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Demo() {
   return <main className={styles.shell}>
-    <Link className={styles.back} href="/#desk">← Back to the packing desk</Link>
+    <Link className={styles.back} href="/#desk" prefetch={false}>← Back to the packing desk</Link>
     <header className={styles.header}>
       <h1>Two crowds. One stockroom.</h1>
       <p>Watch cultural evidence become a packable plan, then survive a last-minute shortage.</p>
@@ -20,7 +20,7 @@ export default function Demo() {
       Your browser cannot play this film. <a href="/media/crate-live-demo.mp4">Download the MP4</a>.
     </video>
     <div className={styles.actions}>
-      <Link className={styles.primary} href="/#desk">Try the live packing desk →</Link>
+      <Link className={styles.primary} href="/#desk" prefetch={false}>Try the live packing desk →</Link>
       <a href="/media/crate-live-demo.mp4" download="crate-live-demo.mp4">Download the film</a>
     </div>
     <p className={styles.note}>The film uses recorded live Qloo results with sample stock and programmes. The moving books illustrate the allocation and repair. Reader preferences and sales effects are unmeasured.</p>

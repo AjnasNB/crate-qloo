@@ -1,4 +1,5 @@
 import handler from "vinext/server/fetch-handler";
+import { serveDemoMedia } from "./lib/media";
 const MCP_DISCOVERY_METHODS = new Set(["server/discover", "tools/list", "ping"]);
 
 function unavailable(status: 429 | 503) {
@@ -15,6 +16,8 @@ function unavailable(status: 429 | 503) {
 
 export default {
   async fetch(request, env, ctx) {
+    const media = await serveDemoMedia(request, env.ASSETS, ctx);
+    if (media) return media;
     if (request.method === "POST") {
       let pathname = new URL(request.url).pathname;
       try { pathname = decodeURIComponent(pathname); } catch { /* The router owns malformed paths. */ }

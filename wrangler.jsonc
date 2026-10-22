@@ -10,7 +10,7 @@
   "assets": {
     "binding": "ASSETS",
     "not_found_handling": "none",
-    "run_worker_first": ["/api/*", "/mcp"]
+    "run_worker_first": ["/api/*", "/mcp", "/media/crate-live-demo.mp4"]
   },
   "ratelimits": [
     {

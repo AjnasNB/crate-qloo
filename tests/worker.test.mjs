@@ -10,6 +10,7 @@ registerHooks({ resolve(specifier, context, nextResolve) {
   return nextResolve(specifier, context);
 } });
 const { handleMcpRequest } = await import("../lib/mcp.ts");
+const { serveDemoMedia } = await import("../lib/media.ts");
 
 // Vinext's entry is virtual at build time; inject only its fetch boundary.
 function worker(forward = async () => Response.json({ forwarded: true })) {
@@ -19,6 +20,7 @@ function worker(forward = async () => Response.json({ forwarded: true })) {
   });
   const taskModule = { exports: {} };
   const context = vm.createContext({ module: taskModule, exports: taskModule.exports, Response, URL, require(name) {
+    if (name === "./lib/media") return { serveDemoMedia };
     assert.equal(name, "vinext/server/fetch-handler");
     return { __esModule: true, default: { fetch: forward } };
   } });
