@@ -6,7 +6,7 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "test": "node --test tests/planner.test.mjs tests/csv.test.mjs tests/qloo.test.mjs tests/mcp.test.mjs tests/download.test.mjs tests/worker.test.mjs tests/media.test.mjs",
+    "test": "node --test tests/planner.test.mjs tests/csv.test.mjs tests/qloo.test.mjs tests/mcp.test.mjs tests/download.test.mjs tests/worker.test.mjs tests/media.test.mjs tests/trial.test.mjs",
     "test:download": "node --test tests/download.test.mjs",
     "test:worker": "node --test tests/worker.test.mjs",
     "test:media": "node --test tests/media.test.mjs",
