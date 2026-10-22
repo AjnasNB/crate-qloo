@@ -161,7 +161,7 @@ async function run(options) {
       _meta: { 'io.modelcontextprotocol/protocolVersion': '2026-07-28', 'io.modelcontextprotocol/clientCapabilities': {}, 'io.modelcontextprotocol/clientInfo': { name: 'Crate live acceptance check', version: '1' } },
     } }, { Accept: 'application/json, text/event-stream', 'MCP-Protocol-Version': '2026-07-28', 'Mcp-Method': method, 'Mcp-Name': name }, true);
     if (mcp.authenticationRequired) {
-      mcpIntegration = { status: 'AUTH_REQUIRED', next: 'Sites OAuth protects /mcp. Verify via the installed native Crate tool; no token extraction or alternate route was attempted.' };
+      mcpIntegration = { status: 'AUTH_REQUIRED', next: 'An access gateway protects /mcp. Verify through an authorized client; no token extraction or alternate route was attempted.' };
     } else {
       assert.ok(!mcp.error && mcp.result && !mcp.result.isError, `MCP failed (${mcp.error?.code ?? mcp.result?.structuredContent?.error?.code ?? 'INFEASIBLE'}).`);
       const tool = mcp.result.structuredContent;

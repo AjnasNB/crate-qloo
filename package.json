@@ -6,15 +6,18 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "test": "node --test tests/planner.test.mjs tests/csv.test.mjs tests/qloo.test.mjs tests/mcp.test.mjs tests/download.test.mjs",
+    "test": "node --test tests/planner.test.mjs tests/csv.test.mjs tests/qloo.test.mjs tests/mcp.test.mjs tests/download.test.mjs tests/worker.test.mjs",
     "test:download": "node --test tests/download.test.mjs",
+    "test:worker": "node --test tests/worker.test.mjs",
     "typecheck": "tsc --noEmit",
-    "install:ci": "node scripts/install-ci.mjs",
+    "install:ci": "npm ci --include=dev --include=optional",
     "dev": "node scripts/run-framework.mjs dev",
     "build": "node scripts/run-framework.mjs build",
-    "start": "node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js dev --config dist/server/wrangler.json --local --persist-to .wrangler/state --ip 127.0.0.1 --inspector-port 0",
+    "start": "wrangler dev --config dist/server/wrangler.json --local --persist-to .wrangler/state --ip 127.0.0.1 --inspector-port 0",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "db:generate": "drizzle-kit generate"
+    "deploy": "wrangler deploy --config dist/server/wrangler.json",
+    "deploy:dry-run": "wrangler deploy --config dist/server/wrangler.json --dry-run --outdir .wrangler/dry-run",
+    "cf:types": "wrangler types cloudflare-env.d.ts --include-runtime false"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
