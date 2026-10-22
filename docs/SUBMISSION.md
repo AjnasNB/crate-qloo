@@ -2,7 +2,7 @@
 
 Developed by Ajnas N B
 
-**Current status, October 22: the submitted entry exists and live Qloo integration passed.** Hosted entity search, reviewed starter identities, both inventory-restricted profiles, programme-dependent allocation, native MCP planning and public stock-safe repair passed. See [the measured live record](LIVE-QLOO.md). The updated public story and pitch are prepared in [DEVPOST-LIVE.json](DEVPOST-LIVE.json); saving them is awaiting browser reconnection. Customer usefulness remains unmeasured. A submission receipt or working API does not establish judging acceptance.
+**Current status, October 22: live Qloo integration passed and the Devpost update is saved and verified.** Hosted entity search, reviewed starter identities, both inventory-restricted profiles, programme-dependent allocation, native MCP planning and public stock-safe repair passed. See [the measured live record](LIVE-QLOO.md). The public story, pitch, Qloo tag, evidence image and judge-facing answer were saved on the existing submission; Devpost retained **Submitted, 5/5 steps done**. Exact saved fields are in [DEVPOST-LIVE.json](DEVPOST-LIVE.json). Customer usefulness remains unmeasured. A submission receipt or working API does not establish judging acceptance.
 
 The access-request receipt and initial submission account below describe October 17, before the issued credential was configured and tested on October 22.
 
@@ -77,6 +77,6 @@ The earlier review identified cultural contribution as the largest uncertainty. 
 - Public repository license: MIT; verify the repository recognizes the included `LICENSE` file.
 - Live Qloo evidence: [verified October 22, 2026](LIVE-QLOO.md).
 - Public access: verified October 22, 2026. Keep the application available free throughout judging.
-- Description and instructions in English: prepared here; reconcile against the final implementation.
+- Description and instructions in English: saved and verified on October 22; exact current fields are in [DEVPOST-LIVE.json](DEVPOST-LIVE.json).
 
-The [challenge requirements](https://qloo.devpost.com/) and [official rules](https://qloo.devpost.com/rules) remain the authority. The entry is submitted and live integration works. The current prepared update still needs to be saved and verified on Devpost; customer evaluation remains future work.
+The [challenge requirements](https://qloo.devpost.com/) and [official rules](https://qloo.devpost.com/rules) remain the authority. The entry is submitted, live integration works, and the current update is saved and publicly verified. Customer evaluation remains future work. Completion screenshots are retained outside Git in the parent workspace as `evidence/devpost-crate-live-updated-oct22.png` and `evidence/devpost-crate-live-results-oct22.png`.

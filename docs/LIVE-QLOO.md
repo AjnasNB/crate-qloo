@@ -51,4 +51,6 @@ A browser manifest-download event timed out, so completed browser download is no
 
 Sample events, quantities, prices and shelf ages remain fictional. No customer adoption, reader acceptance, time savings, sales uplift, organizer approval or winning probability is claimed. [Public live evidence illustration](assets/crate-live-qloo.png).
 
-The existing Devpost update is prepared with these measured results. Browser reconnection is required to save and verify it; the submitted entry has not yet been relabeled as live by this document.
+The [existing Devpost entry](https://devpost.com/software/crate-6jkox0) was updated and verified on October 22. Its saved story, live tagline, Qloo tag, historical screenshot caption and judge-facing answer are recorded in [DEVPOST-LIVE.json](DEVPOST-LIVE.json). The public story displays these measured results and the live evidence image, whose browser load completed at 1905 × 882 pixels. The finalization page retained **Submitted, 5/5 steps done**. No duplicate project or new agreement acceptance was needed.
+
+Local browser proof is retained outside Git in the parent workspace as `evidence/devpost-crate-live-updated-oct22.png` and `evidence/devpost-crate-live-results-oct22.png`. This record changes no application code and does not represent a new API test run. The earlier video remains explicitly identified as a synthetic prototype.

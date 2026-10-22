@@ -10,7 +10,7 @@ Crate is a planning desk for an independent bookstore sending two separately sta
 
 **Live Qloo integration passed on October 22, 2026.** The public app offers a reviewed twelve-title starter catalogue: choose **Use live Qloo**, then **Pack the stalls**. Hosted search, inventory-restricted rankings for both programmes, changed-programme retrieval, stock-safe repair and an installed native MCP planning call passed. See the [measured live record and limits](docs/LIVE-QLOO.md).
 
-Simulation remains explicitly labeled and uses hand-authored or deterministic fixtures. Sample stock and events are fictional. This version does not call a language model. Devpost confirmed the original submission on October 17; its live-status update is prepared and awaiting a working browser connection. Software verification does not establish reader usefulness, customer results or judging acceptance.
+Simulation remains explicitly labeled and uses hand-authored or deterministic fixtures. Sample stock and events are fictional. This version does not call a language model. The [existing Devpost entry](https://devpost.com/software/crate-6jkox0) was updated and verified on October 22 with the live results, evidence image and judge instructions; it remains Submitted with 5/5 steps complete. Software verification does not establish reader usefulness, customer results or judging acceptance.
 
 Report a workflow blocker through the [sanitized feedback form](https://github.com/AjnasNB/crate-qloo/issues/new?template=workflow-feedback.yml). Do not include private stock files, customer details or credentials.
 
