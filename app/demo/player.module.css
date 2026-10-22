@@ -1,0 +1,13 @@
+.shell{max-width:1200px;margin:0 auto;padding:36px 32px 48px}
+.back{display:inline-flex;align-items:center;min-height:44px;color:#285544;font-size:14px}
+.header{margin:38px 0 28px;max-width:850px}
+.header h1{font:clamp(36px,5vw,64px)/1.06 Georgia,serif;letter-spacing:-1.3px}
+.header p{margin-top:18px;font-size:17px;line-height:1.55;color:#586b62;max-width:620px}
+.video{display:block;width:100%;aspect-ratio:16/9;background:#172d2b;border:1px solid #dce2d8;border-radius:8px}
+.actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:24px;font-size:14px}
+.actions a{display:inline-flex;align-items:center;min-height:48px;text-decoration:underline;text-underline-offset:4px}
+.actions .primary{background:#285544;color:white;text-decoration:none;padding:0 22px;border-radius:5px}
+.note{max-width:790px;margin-top:28px;font-size:13px;line-height:1.7;color:#586b62}
+.footer{border-top:1px solid #dce2d8;margin-top:36px;padding-top:24px;font-size:12px;color:#586b62}
+.footer a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:600px){.shell{padding:22px 18px 36px}.header{margin-top:26px}.header p{font-size:16px}.actions{gap:10px 22px}}

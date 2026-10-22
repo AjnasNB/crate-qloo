@@ -53,6 +53,7 @@ next-env.d.ts
 /.codex/
 /outputs/
 /work/
+/public/media/*.mp4
 
 # Local check outputs and project memory
 *.tsbuildinfo
